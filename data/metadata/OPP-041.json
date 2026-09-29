@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-041",
+  "title": "Outreachy Internships",
+  "provider": "Outreachy",
+  "category": "Remote Tech Internship",
+  "url": "https://www.outreachy.org/apply/eligibility/",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-041.html",
+  "processed_file": "OPP-041.txt",
+  "source_type": "html",
+  "characters": 8795,
+  "words": 1419,
+  "raw_sha256": "49e46504a2233aedbb8b0cc0578e82fa3b183663bc64d95d528e9ada47475ea8",
+  "parser": "beautifulsoup-lxml"
+}

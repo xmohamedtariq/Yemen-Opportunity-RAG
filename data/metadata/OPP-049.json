@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-049",
+  "title": "NASA International Space Apps Challenge",
+  "provider": "NASA",
+  "category": "Hackathon / Innovation",
+  "url": "https://www.nasa.gov/prizes-challenges-and-crowdsourcing/",
+  "last_verified": "2026-09-27",
+  "raw_file": "OPP-049.html",
+  "processed_file": "OPP-049.txt",
+  "source_type": "html",
+  "characters": 6311,
+  "words": 919,
+  "raw_sha256": "545c9459234af0f63069e21b3ac60ed5e986833ea5545eb7b76d471ac0cd90d6",
+  "parser": "beautifulsoup-lxml"
+}

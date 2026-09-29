@@ -1,0 +1,51 @@
+﻿source_id,title,url,status,http_status,content_type,file,bytes,error
+OPP-001,Chevening Scholarship - Yemen,https://www.chevening.org/scholarship/yemen/,failed,,,,0,"HTTPSConnectionPool(host='www.chevening.org', port=443): Max retries exceeded with url: /scholarship/yemen/ (Caused by ReadTimeoutError(""HTTPSConnectionPool(host='www.chevening.org', port=443): Read timed out. (read timeout=30)""))"
+OPP-002,Erasmus Mundus Joint Masters,https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters,success,200,text/html; charset=utf-8,OPP-002.html,194448,
+OPP-003,Turkiye Scholarships,https://www.turkiyeburslari.gov.tr/scholarshipsprograms,success,200,text/html; charset=utf-8,OPP-003.html,38295,
+OPP-004,MEXT Scholarships,https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/,success,200,text/html,OPP-004.html,28825,
+OPP-005,Global Korea Scholarship,https://www.studyinkorea.go.kr/,success,200,text/html;charset=utf-8,OPP-005.html,126282,
+OPP-006,Romanian Government MFA Scholarship,https://studyinromania.gov.ro/mfa_2026-2027,success,200,text/html; charset=utf-8,OPP-006.html,108472,
+OPP-007,MAECI Scholarships for Foreign Students,https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/,success,200,text/html; charset=utf-8,OPP-007.html,97946,
+OPP-008,Swiss Government Excellence Scholarships,https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships,success,200,text/html;charset=utf-8,OPP-008.html,199491,
+OPP-009,DAAD EPOS,https://www.daad.de/en/information-services-for-higher-education-institutions/further-information-on-daad-programmes/epos/,failed,,,,0,403 Client Error: Forbidden for url: https://www.daad.de/en/information-services-for-higher-education-institutions/further-information-on-daad-programmes/epos/
+OPP-010,DAAD Helmut-Schmidt Programme,https://www.daad.de/en/studying-in-germany/scholarships/daad-funding-programmes/helmut-schmidt-programme/,failed,,,,0,403 Client Error: Forbidden for url: https://www.daad.de/en/studying-in-germany/scholarships/daad-funding-programmes/helmut-schmidt-programme/
+OPP-011,IsDB Scholarship Programs,https://www.isdb.org/scholarships/scholarship-programs,success,200,text/html; charset=utf-8,OPP-011.html,44995,
+OPP-012,Joint Japan World Bank Graduate Scholarship Program,https://www.worldbank.org/en/programs/scholarships/jj-wbgsp,success,200,text/html;charset=utf-8,OPP-012.html,60015,
+OPP-013,Brunei Darussalam Government Scholarship,https://www.mfa.gov.bn/Pages/scholarship.aspx,success,200,text/html; charset=utf-8,OPP-013.html,83529,
+OPP-014,KAUST Fellowship,https://admissions.kaust.edu.sa/fees-funding,success,200,text/html; charset=utf-8,OPP-014.html,46562,
+OPP-015,KFUPM International Scholarships,https://www.kfupm.edu.sa/study/international-students/fees-and-scholarships,success,200,text/html; charset=utf-8,OPP-015.html,43834,
+OPP-016,HBKU Scholarships,https://www.hbku.edu.qa/en/scholarship,success,200,text/html; charset=utf-8,OPP-016.html,91491,
+OPP-017,Qatar University International Students Scholarship,https://www.qu.edu.qa/en-us/students/admission/scholarships/types,success,200,text/html; charset=utf-8,OPP-017.html,195816,
+OPP-018,MBZUAI Undergraduate Admissions and Scholarships,https://mbzuai.ac.ae/admissions/undergraduate-admissions/,failed,,,,0,403 Client Error: Forbidden for url: https://mbzuai.ac.ae/admissions/undergraduate-admissions/
+OPP-019,MBZUAI Graduate Admissions,https://mbzuai.ac.ae/admissions/,failed,,,,0,403 Client Error: Forbidden for url: https://mbzuai.ac.ae/admissions/
+OPP-020,Tomorrow's Leaders Program,https://www.aucegypt.edu/admissions/scholarships/tomorrows-leaders-undergraduate-program,success,200,text/html; charset=utf-8,OPP-020.html,139268,
+OPP-021,Study in Saudi Scholarships,https://studyinsaudi.moe.gov.sa/,failed,,,,0,"HTTPSConnectionPool(host='studyinsaudi.moe.gov.sa', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(""HTTPSConnection(host='studyinsaudi.moe.gov.sa', port=443): Failed to resolve 'studyinsaudi.moe.gov.sa' ([Errno 11002] getaddrinfo failed)""))"
+OPP-022,International Student Scholarships,https://www.uaeu.ac.ae/en/admission/,success,200,text/html; charset=utf-8,OPP-022.html,168421,
+OPP-023,Stipendium Hungaricum,https://stipendiumhungaricum.hu/,success,200,text/html; charset=utf-8,OPP-023.html,43368,
+OPP-024,UNDP Graduate Programme,https://www.undp.org/careers/undp-graduate-programme,failed,,,,0,403 Client Error: Forbidden for url: https://www.undp.org/careers/undp-graduate-programme
+OPP-025,UNICEF Internship Programme,https://www.unicef.org/careers/internships,success,200,text/html; charset=utf-8,OPP-025.html,174679,
+OPP-026,UNHCR Internship Programme,https://www.unhcr.org/get-involved/work-us/careers-unhcr/types-contracts-and-appointments/internships,failed,,,,0,403 Client Error: Forbidden for url: https://www.unhcr.org/get-involved/work-us/careers-unhcr/types-contracts-and-appointments/internships
+OPP-027,UNFPA Internship Programme,https://www.unfpa.org/jobs/unfpa-internship-program,success,200,text/html; charset=utf-8,OPP-027.html,132186,
+OPP-028,FAO Internship Programme,https://www.fao.org/employment/young-talent-programme/internship-programme/,success,200,text/html; charset=utf-8,OPP-028.html,54843,
+OPP-029,FAO Young Professionals Programme,https://www.fao.org/employment/young-talent-programme/young-professionals-programme/en,success,200,text/html; charset=utf-8,OPP-029.html,55734,
+OPP-030,ILO Internship Opportunities,https://www.ilo.org/about-ilo/employment-opportunities,success,200,text/html; charset=utf-8,OPP-030.html,46683,
+OPP-031,UNESCO Internship Programme,https://careers.unesco.org/content/Internship-Programme/,success,200,text/html;charset=utf-8,OPP-031.html,61302,
+OPP-032,WIPO Internship Program,https://www.wipo.int/en/web/working-at-wipo/internship-program,success,200,text/html;charset=utf-8,OPP-032.html,182234,
+OPP-033,WIPO Fellowship Program,https://www.wipo.int/en/web/working-at-wipo/fellowship-program,success,200,text/html;charset=utf-8,OPP-033.html,161774,
+OPP-034,WTO Internship Opportunities,https://www.wto.org/english/thewto_e/vacan_e/vacan_e.htm,success,200,text/html,OPP-034.html,15935,
+OPP-035,WTO Young Professionals Programme,https://www.wto.org/english/thewto_e/vacan_e/ypp_e.htm,success,200,text/html,OPP-035.html,13628,
+OPP-036,World Bank Group Pioneers Internship,https://www.worldbank.org/ext/en/careers/talent-programs/wbg-pioneers,success,200,text/html; charset=utf-8,OPP-036.html,45436,
+OPP-037,IMF Fund Internship Program,https://www.imf.org/en/about/recruitment/working-at-the-imf/fund-internship-program,failed,,,,0,403 Client Error: Forbidden for url: https://www.imf.org/en/about/recruitment/working-at-the-imf/fund-internship-program
+OPP-038,United Nations Volunteers,https://www.unv.org/become-volunteer,success,200,text/html,OPP-038.html,212,
+OPP-039,ICANN Fellowship Program,https://www.icann.org/fellowshipprogram,success,200,text/html; charset=utf-8,OPP-039.html,81459,
+OPP-040,Internet Society Fellowship Programs,https://www.internetsociety.org/fellowship/,success,200,text/html; charset=utf-8,OPP-040.html,362888,
+OPP-041,Outreachy Internships,https://www.outreachy.org/apply/eligibility/,success,200,text/html; charset=utf-8,OPP-041.html,17441,
+OPP-042,Google Summer of Code,https://summerofcode.withgoogle.com/get-started,success,200,text/html; charset=utf-8,OPP-042.html,127878,
+OPP-043,GitHub Campus Experts,https://docs.github.com/en/education/about-github-education/use-github-at-your-educational-institution/applying-to-be-a-github-campus-expert,success,200,text/html; charset=utf-8,OPP-043.html,125527,
+OPP-044,Swift Student Challenge,https://developer.apple.com/swift-student-challenge/eligibility/,success,200,text/html,OPP-044.html,107267,
+OPP-045,MEPI Student Leaders Program,https://studentleaders-apply.smapply.io/res/p/FAQ/,success,200,text/html; charset=utf-8,OPP-045.html,39028,
+OPP-046,One Young World Scholarships,https://www.oneyoungworld.com/scholarships,success,200,text/html; charset=utf-8,OPP-046.html,159535,
+OPP-047,Youth4Climate Call for Solutions,https://community.youth4climate.info/,failed,,,,0,403 Client Error: Forbidden for url: https://community.youth4climate.info/
+OPP-048,Hult Prize,https://www.hultprize.org/how-it-works,success,200,text/html; charset=utf-8,OPP-048.html,299064,
+OPP-049,NASA International Space Apps Challenge,https://www.spaceappschallenge.org/,failed,,,,0,"HTTPSConnectionPool(host='www.spaceappschallenge.org', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+OPP-050,UNICEF Venture Fund,https://www.unicefventurefund.org/apply-funding,success,200,text/html; charset=utf-8,OPP-050.html,176456,

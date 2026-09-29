@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-010",
+  "title": "World Bank Treasury Summer Internship",
+  "provider": "World Bank Group Treasury",
+  "category": "Internship",
+  "url": "https://treasury.worldbank.org/en/about/unit/treasury/about/student-and-graduate-careers",
+  "last_verified": "2026-09-27",
+  "raw_file": "OPP-010.html",
+  "processed_file": "OPP-010.txt",
+  "source_type": "html",
+  "characters": 20270,
+  "words": 3023,
+  "raw_sha256": "fa616b1fc0332af70684ad1c3fd059f384668b21370cf76c19ba52cb491147c9",
+  "parser": "beautifulsoup-lxml"
+}

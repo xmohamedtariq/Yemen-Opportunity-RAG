@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-042",
+  "title": "Google Summer of Code",
+  "provider": "Google",
+  "category": "Open Source / Tech",
+  "url": "https://summerofcode.withgoogle.com/get-started",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-042.html",
+  "processed_file": "OPP-042.txt",
+  "source_type": "html",
+  "characters": 788,
+  "words": 128,
+  "raw_sha256": "ad24557d1e72fb3ea88565809810889f133ff0a0c0801a4a9db6cb00475b218a",
+  "parser": "beautifulsoup-lxml"
+}

@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-017",
+  "title": "Qatar University International Students Scholarship",
+  "provider": "Qatar University",
+  "category": "Scholarship",
+  "url": "https://www.qu.edu.qa/en-us/students/admission/scholarships/types",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-017.html",
+  "processed_file": "OPP-017.txt",
+  "source_type": "html",
+  "characters": 27820,
+  "words": 3992,
+  "raw_sha256": "dd714cc5c47f5ae5a3a82079e1cb63f46f82769386bf3134986ec6c48dbb2acf",
+  "parser": "beautifulsoup-lxml"
+}

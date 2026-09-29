@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-025",
+  "title": "UNICEF Internship Programme",
+  "provider": "UNICEF",
+  "category": "Internship",
+  "url": "https://www.unicef.org/careers/internships",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-025.html",
+  "processed_file": "OPP-025.txt",
+  "source_type": "html",
+  "characters": 3301,
+  "words": 521,
+  "raw_sha256": "fa2a537b8007fed4c2cc8419cd7c49d19fa78c0f527502d435e8a707467fc487",
+  "parser": "beautifulsoup-lxml"
+}

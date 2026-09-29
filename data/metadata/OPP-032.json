@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-032",
+  "title": "WIPO Internship Program",
+  "provider": "WIPO",
+  "category": "Internship",
+  "url": "https://www.wipo.int/en/web/working-at-wipo/internship-program",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-032.html",
+  "processed_file": "OPP-032.txt",
+  "source_type": "html",
+  "characters": 9189,
+  "words": 1401,
+  "raw_sha256": "effd11e47c0079250caec85837838970c26374c94dfa38aba2dafbcd527d739e",
+  "parser": "beautifulsoup-lxml"
+}

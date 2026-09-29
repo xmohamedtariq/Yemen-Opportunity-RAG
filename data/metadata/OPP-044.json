@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-044",
+  "title": "Swift Student Challenge",
+  "provider": "Apple",
+  "category": "Tech Competition",
+  "url": "https://developer.apple.com/swift-student-challenge/eligibility/",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-044.html",
+  "processed_file": "OPP-044.txt",
+  "source_type": "html",
+  "characters": 2577,
+  "words": 419,
+  "raw_sha256": "78a24b82da69be949643349916400786699ddce2bdf00903672759e19ac0f3c4",
+  "parser": "beautifulsoup-lxml"
+}

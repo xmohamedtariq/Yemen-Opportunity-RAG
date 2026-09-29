@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-022",
+  "title": "International Student Scholarships",
+  "provider": "United Arab Emirates University",
+  "category": "Scholarship",
+  "url": "https://www.uaeu.ac.ae/en/admission/",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-022.html",
+  "processed_file": "OPP-022.txt",
+  "source_type": "html",
+  "characters": 2046,
+  "words": 293,
+  "raw_sha256": "f943be4286233975e8a88e5ec77a3441f9e5a21f1e09e9ee91cddbb6c51ddaf1",
+  "parser": "beautifulsoup-lxml"
+}

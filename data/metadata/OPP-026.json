@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-026",
+  "title": "WFP Internship Programme",
+  "provider": "World Food Programme",
+  "category": "Internship",
+  "url": "https://www.wfp.org/careers/contract-types",
+  "last_verified": "2026-09-27",
+  "raw_file": "OPP-026.html",
+  "processed_file": "OPP-026.txt",
+  "source_type": "html",
+  "characters": 23119,
+  "words": 3284,
+  "raw_sha256": "5ed4eca45274530fed3e03cf0eafe4eea8a8ac21b01ca4d61f3be2bc5eb985de",
+  "parser": "beautifulsoup-lxml"
+}

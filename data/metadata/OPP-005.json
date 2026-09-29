@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-005",
+  "title": "Global Korea Scholarship",
+  "provider": "Study in Korea / NIIED",
+  "category": "Scholarship",
+  "url": "https://www.studyinkorea.go.kr/",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-005.html",
+  "processed_file": "OPP-005.txt",
+  "source_type": "html",
+  "characters": 8046,
+  "words": 1116,
+  "raw_sha256": "d0896817e11ce4868141c3cbe9584ba84fd8a4079771c39920de1dfbeafef4b1",
+  "parser": "beautifulsoup-lxml"
+}

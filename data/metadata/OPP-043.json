@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-043",
+  "title": "GitHub Campus Experts",
+  "provider": "GitHub",
+  "category": "Tech / Leadership",
+  "url": "https://docs.github.com/en/education/about-github-education/use-github-at-your-educational-institution/applying-to-be-a-github-campus-expert",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-043.html",
+  "processed_file": "OPP-043.txt",
+  "source_type": "html",
+  "characters": 3118,
+  "words": 519,
+  "raw_sha256": "4d66873d3b2c568bb63d4b7f95c7512fec2053d3d5febd81fac0c7698921d15d",
+  "parser": "beautifulsoup-lxml"
+}

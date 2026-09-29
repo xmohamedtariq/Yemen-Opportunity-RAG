@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-036",
+  "title": "World Bank Group Pioneers Internship",
+  "provider": "World Bank Group",
+  "category": "Internship",
+  "url": "https://www.worldbank.org/ext/en/careers/talent-programs/wbg-pioneers",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-036.html",
+  "processed_file": "OPP-036.txt",
+  "source_type": "html",
+  "characters": 6962,
+  "words": 776,
+  "raw_sha256": "f76883554225cf49a1d4726f2a534a1ded0dc08382288dcbb0fab9567244e7db",
+  "parser": "beautifulsoup-lxml"
+}

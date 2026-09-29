@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-002",
+  "title": "Erasmus Mundus Joint Masters",
+  "provider": "European Commission",
+  "category": "Scholarship",
+  "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-002.html",
+  "processed_file": "OPP-002.txt",
+  "source_type": "html",
+  "characters": 3160,
+  "words": 476,
+  "raw_sha256": "371e301e30ab61983f4d2c5d7d95a6f7d509fc16fed21b6861f4e3b0f5cb6aff",
+  "parser": "beautifulsoup-lxml"
+}

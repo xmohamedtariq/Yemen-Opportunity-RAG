@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-001",
+  "title": "Chevening Scholarship - UK Government Overview",
+  "provider": "UK Government",
+  "category": "Scholarship",
+  "url": "https://www.gov.uk/postgraduate-scholarships-international-students",
+  "last_verified": "2026-09-27",
+  "raw_file": "OPP-001.html",
+  "processed_file": "OPP-001.txt",
+  "source_type": "html",
+  "characters": 1218,
+  "words": 212,
+  "raw_sha256": "5b896a117910f8f4751a0187c7409939ce8ef480640ab545c13a42d01c158643",
+  "parser": "beautifulsoup-lxml"
+}

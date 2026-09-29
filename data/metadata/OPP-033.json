@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-033",
+  "title": "WIPO Fellowship Program",
+  "provider": "WIPO",
+  "category": "Fellowship",
+  "url": "https://www.wipo.int/en/web/working-at-wipo/fellowship-program",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-033.html",
+  "processed_file": "OPP-033.txt",
+  "source_type": "html",
+  "characters": 9516,
+  "words": 1443,
+  "raw_sha256": "9813e24923264f7dafaacdfe42df79a3f76a52fce6084550d733570f3b13689e",
+  "parser": "beautifulsoup-lxml"
+}

@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-014",
+  "title": "KAUST Fellowship",
+  "provider": "KAUST",
+  "category": "Graduate Scholarship",
+  "url": "https://admissions.kaust.edu.sa/fees-funding",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-014.html",
+  "processed_file": "OPP-014.txt",
+  "source_type": "html",
+  "characters": 1789,
+  "words": 287,
+  "raw_sha256": "b651672959067e1be055fd53400857591b7367f9b4ee4a6c93f771a0a75bcfbd",
+  "parser": "beautifulsoup-lxml"
+}

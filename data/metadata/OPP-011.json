@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-011",
+  "title": "IsDB Scholarship Programs",
+  "provider": "Islamic Development Bank",
+  "category": "Scholarship",
+  "url": "https://www.isdb.org/scholarships/scholarship-programs",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-011.html",
+  "processed_file": "OPP-011.txt",
+  "source_type": "html",
+  "characters": 1524,
+  "words": 188,
+  "raw_sha256": "f44b064fa5ffe5cee2dae29677624b1f8e7bcc66e47d1c2c74058768da7847f9",
+  "parser": "beautifulsoup-lxml"
+}

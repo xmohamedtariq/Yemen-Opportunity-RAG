@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-035",
+  "title": "WTO Young Professionals Programme",
+  "provider": "World Trade Organization",
+  "category": "Young Professionals",
+  "url": "https://www.wto.org/english/thewto_e/vacan_e/ypp_e.htm",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-035.html",
+  "processed_file": "OPP-035.txt",
+  "source_type": "html",
+  "characters": 2829,
+  "words": 421,
+  "raw_sha256": "70952b9fd2b7ca441cbc888cc3a88582eed37143b83ae9b21b40984df04100bc",
+  "parser": "beautifulsoup-lxml"
+}

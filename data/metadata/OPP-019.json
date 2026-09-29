@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-019",
+  "title": "IsDB Young Professional Program",
+  "provider": "Islamic Development Bank",
+  "category": "Young Professionals",
+  "url": "https://careers.isdb.org/",
+  "last_verified": "2026-09-27",
+  "raw_file": "OPP-019.html",
+  "processed_file": "OPP-019.txt",
+  "source_type": "html",
+  "characters": 2810,
+  "words": 440,
+  "raw_sha256": "200dc4deddb2886ea0b30aae4434c9c08980f1b0e4b64cfef153078911d00aee",
+  "parser": "beautifulsoup-lxml"
+}

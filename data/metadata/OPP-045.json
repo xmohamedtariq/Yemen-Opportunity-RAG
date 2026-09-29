@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-045",
+  "title": "MEPI Student Leaders Program",
+  "provider": "U.S.-Middle East Partnership Initiative",
+  "category": "Leadership",
+  "url": "https://studentleaders-apply.smapply.io/res/p/FAQ/",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-045.html",
+  "processed_file": "OPP-045.txt",
+  "source_type": "html",
+  "characters": 16651,
+  "words": 2580,
+  "raw_sha256": "5eb5f3fb931912b4c462b10e54d98aca80ce75212edd9ed9e8d403cab58f32b4",
+  "parser": "beautifulsoup-lxml"
+}

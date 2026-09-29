@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-013",
+  "title": "Brunei Darussalam Government Scholarship",
+  "provider": "Government of Brunei",
+  "category": "Scholarship",
+  "url": "https://www.mfa.gov.bn/pages/online-bdgs2.aspx",
+  "last_verified": "2026-09-27",
+  "raw_file": "OPP-013.html",
+  "processed_file": "OPP-013.txt",
+  "source_type": "html",
+  "characters": 6983,
+  "words": 1027,
+  "raw_sha256": "07a0573189dd1262791b86902450b88f29666b812c34e28e45ea89fde95a9dfd",
+  "parser": "beautifulsoup-lxml"
+}

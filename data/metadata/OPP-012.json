@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-012",
+  "title": "Joint Japan World Bank Graduate Scholarship Program",
+  "provider": "World Bank",
+  "category": "Graduate Scholarship",
+  "url": "https://www.worldbank.org/en/programs/scholarships/jj-wbgsp",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-012.html",
+  "processed_file": "OPP-012.txt",
+  "source_type": "html",
+  "characters": 8920,
+  "words": 1310,
+  "raw_sha256": "119d3e58528a8390f386d6391223a7ea975c9c8f282d726440c79874605c682d",
+  "parser": "beautifulsoup-lxml"
+}

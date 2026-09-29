@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-024",
+  "title": "WIPO Young Experts Program",
+  "provider": "WIPO",
+  "category": "Young Professionals",
+  "url": "https://www.wipo.int/en/web/working-at-wipo/young-experts-program",
+  "last_verified": "2026-09-27",
+  "raw_file": "OPP-024.html",
+  "processed_file": "OPP-024.txt",
+  "source_type": "html",
+  "characters": 12085,
+  "words": 1867,
+  "raw_sha256": "893d9b68e856662ba63f5b1ed98e81db2271477a8d3e04e5c5da414fea8e9524",
+  "parser": "beautifulsoup-lxml"
+}

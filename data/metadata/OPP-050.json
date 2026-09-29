@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-050",
+  "title": "UNICEF Venture Fund",
+  "provider": "UNICEF",
+  "category": "Startup Funding",
+  "url": "https://www.unicefventurefund.org/apply-funding",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-050.html",
+  "processed_file": "OPP-050.txt",
+  "source_type": "html",
+  "characters": 23925,
+  "words": 3781,
+  "raw_sha256": "f9b89cae0b2b86cf8b1d7ee56effde87031286857f901f1221146df58ba78a60",
+  "parser": "beautifulsoup-lxml"
+}

@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-004",
+  "title": "MEXT Scholarships",
+  "provider": "Government of Japan",
+  "category": "Scholarship",
+  "url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-004.html",
+  "processed_file": "OPP-004.txt",
+  "source_type": "html",
+  "characters": 8531,
+  "words": 1236,
+  "raw_sha256": "47bbe69dd7be9b50c309761de57e969f426a2bc2b3eb311cbdfc70599334922e",
+  "parser": "beautifulsoup-lxml"
+}

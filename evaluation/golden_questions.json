@@ -1,0 +1,304 @@
+[
+  {
+    "id": "Q01",
+    "question": "ما الحد الأدنى من الخبرة العملية المؤهلة المطلوبة للتقديم على منحة Chevening وفق المصدر؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-001-CH-001"
+    ],
+    "gold_source_id": "OPP-001",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q02",
+    "question": "During which months should applicants usually submit an Erasmus Mundus Joint Masters application for courses starting the following academic year?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-002-CH-001"
+    ],
+    "gold_source_id": "OPP-002",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q03",
+    "question": "ما شرط العمر للمتقدم إلى برنامج الماجستير ضمن Türkiye Scholarships؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-003-CH-001"
+    ],
+    "gold_source_id": "OPP-003",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q04",
+    "question": "What are the age and schooling requirements for undergraduate applicants to the MEXT Scholarship?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-004-CH-002"
+    ],
+    "gold_source_id": "OPP-004",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q05",
+    "question": "ما شروط الأهلية الأساسية للانضمام إلى برنامج GitHub Campus Experts من حيث العمر، مدة استخدام GitHub، والحالة الدراسية؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-043-CH-001"
+    ],
+    "gold_source_id": "OPP-043",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q06",
+    "question": "Which fields of study are excluded from the Romanian Government MFA Scholarship?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-006-CH-002"
+    ],
+    "gold_source_id": "OPP-006",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q07",
+    "question": "هل يمكن لمطور يعمل بدوام كامل التقديم إلى Swift Student Challenge، وما نوع الحالة الدراسية المقبولة؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-044-CH-001"
+    ],
+    "gold_source_id": "OPP-044",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q08",
+    "question": "What academic support is required in Switzerland for an applicant to the Swiss Government research scholarship?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-008-CH-001"
+    ],
+    "gold_source_id": "OPP-008",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q09",
+    "question": "كم سنة من الخبرة المهنية يتطلبها برنامج World Bank Group Young Professionals Program، وما متطلب اللغة الإنجليزية؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-009-CH-002"
+    ],
+    "gold_source_id": "OPP-009",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q10",
+    "question": "Does the World Bank Group Young Professionals Program have an age requirement, and what experience range is required?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-009-CH-004"
+    ],
+    "gold_source_id": "OPP-009",
+    "difficulty": "hard"
+  },
+  {
+    "id": "Q11",
+    "question": "ما شروط الأهلية الأساسية لبرنامج World Bank Treasury Summer Internship من حيث المرحلة الجامعية، موعد التخرج، والتفرغ؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-010-CH-006"
+    ],
+    "gold_source_id": "OPP-010",
+    "difficulty": "hard"
+  },
+  {
+    "id": "Q12",
+    "question": "Can a student already enrolled in a master's program apply to the World Bank Treasury Summer Internship?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-010-CH-007"
+    ],
+    "gold_source_id": "OPP-010",
+    "difficulty": "hard"
+  },
+  {
+    "id": "Q13",
+    "question": "ما المزايا المالية الأساسية التي تغطيها منحة Joint Japan/World Bank Graduate Scholarship، بما في ذلك السفر والتأمين والمعيشة؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-012-CH-003"
+    ],
+    "gold_source_id": "OPP-012",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q14",
+    "question": "How much paid development-related work experience is broadly required for developing-country applicants to the JJ/WBGSP?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-012-CH-002"
+    ],
+    "gold_source_id": "OPP-012",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q15",
+    "question": "ما الحد الأقصى للعمر لمتقدمي البكالوريوس أو الدبلوم وللمتقدمين للماجستير في منحة حكومة بروناي؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-013-CH-001"
+    ],
+    "gold_source_id": "OPP-013",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q16",
+    "question": "What major costs and benefits are covered by the KAUST Fellowship?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-014-CH-001"
+    ],
+    "gold_source_id": "OPP-014",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q17",
+    "question": "ما المزايا التي تقدمها منحة الطلاب الدوليين في جامعة قطر، وما الحد الأدنى لمعدل الثانوية المذكور؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-017-CH-002"
+    ],
+    "gold_source_id": "OPP-017",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q18",
+    "question": "What is the core Stanford admission requirement for eligibility for Knight-Hennessy Scholars?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-018-CH-001"
+    ],
+    "gold_source_id": "OPP-018",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q19",
+    "question": "ما مدة WIPO Young Experts Program، وما الحد الأقصى للعمر والحد الأدنى للخبرة المطلوبة؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-024-CH-001",
+      "OPP-024-CH-002"
+    ],
+    "gold_source_id": "OPP-024",
+    "difficulty": "hard"
+  },
+  {
+    "id": "Q20",
+    "question": "What are the main age, education or recent-graduate, and language requirements for the UNICEF Internship Programme?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-025-CH-001"
+    ],
+    "gold_source_id": "OPP-025",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q21",
+    "question": "ما متطلبات العمر والمؤهل والخبرة واللغات في برنامج FAO Young Professionals Programme؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-029-CH-001"
+    ],
+    "gold_source_id": "OPP-029",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q22",
+    "question": "What monthly stipend is listed for WIPO Category II graduate interns, and how long can the internship last?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-032-CH-002"
+    ],
+    "gold_source_id": "OPP-032",
+    "difficulty": "hard"
+  },
+  {
+    "id": "Q23",
+    "question": "أين يُعقد WIPO Fellowship Program وما المدة المذكورة للزمالة؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-033-CH-001"
+    ],
+    "gold_source_id": "OPP-033",
+    "difficulty": "hard"
+  },
+  {
+    "id": "Q24",
+    "question": "What are the education, English-language, work-experience, and nationality requirements for the World Bank Group Pioneers Internship?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-036-CH-002"
+    ],
+    "gold_source_id": "OPP-036",
+    "difficulty": "hard"
+  },
+  {
+    "id": "Q25",
+    "question": "ما الحد الأدنى للعمر المطلوب للتقديم إلى ICANN Fellowship Program، وما المتطلب المتعلق بدورات ICANN Learn؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-039-CH-004"
+    ],
+    "gold_source_id": "OPP-039",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q26",
+    "question": "What must Internet Society Fellowship applicants complete before they receive the fellowship application link?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-040-CH-006"
+    ],
+    "gold_source_id": "OPP-040",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q27",
+    "question": "هل الشخص الذي سبق له التدريب في Google Summer of Code مؤهل للتقديم إلى Outreachy؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-041-CH-002"
+    ],
+    "gold_source_id": "OPP-041",
+    "difficulty": "hard"
+  },
+  {
+    "id": "Q28",
+    "question": "What are the main eligibility requirements for a Google Summer of Code contributor?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-042-CH-001"
+    ],
+    "gold_source_id": "OPP-042",
+    "difficulty": "hard"
+  },
+  {
+    "id": "Q29",
+    "question": "هل يمكن للمتقدم اليمني المقيم في دولة أخرى مشاركة ضمن منطقة MENA التقديم إلى MEPI Student Leaders Program؟",
+    "language": "ar",
+    "gold_chunk_ids": [
+      "OPP-045-CH-002"
+    ],
+    "gold_source_id": "OPP-045",
+    "difficulty": "hard"
+  },
+  {
+    "id": "Q30",
+    "question": "Can a university or an NGO submit an Expression of Interest to the UNICEF Venture Fund, or must the applicant be a private company?",
+    "language": "en",
+    "gold_chunk_ids": [
+      "OPP-050-CH-007",
+      "OPP-050-CH-009"
+    ],
+    "gold_source_id": "OPP-050",
+    "difficulty": "hard"
+  }
+]

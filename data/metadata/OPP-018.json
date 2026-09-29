@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-018",
+  "title": "Knight-Hennessy Scholars",
+  "provider": "Stanford University",
+  "category": "Graduate Scholarship",
+  "url": "https://knight-hennessy.stanford.edu/admission/before-you-apply/eligibility",
+  "last_verified": "2026-09-27",
+  "raw_file": "OPP-018.html",
+  "processed_file": "OPP-018.txt",
+  "source_type": "html",
+  "characters": 7335,
+  "words": 1171,
+  "raw_sha256": "390e06235334fa77b07de769fb4eaf7859862548b70263f1ec07787c767d808e",
+  "parser": "beautifulsoup-lxml"
+}

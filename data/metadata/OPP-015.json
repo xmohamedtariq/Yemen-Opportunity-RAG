@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-015",
+  "title": "KFUPM International Scholarships",
+  "provider": "KFUPM",
+  "category": "Scholarship",
+  "url": "https://www.kfupm.edu.sa/study/international-students/fees-and-scholarships",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-015.html",
+  "processed_file": "OPP-015.txt",
+  "source_type": "html",
+  "characters": 4853,
+  "words": 691,
+  "raw_sha256": "e5062449053c0eaf10d3e345c9ba20fc6cb49d79c01d15e54269dc40d7a151a9",
+  "parser": "beautifulsoup-lxml"
+}

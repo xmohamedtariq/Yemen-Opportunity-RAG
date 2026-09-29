@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-028",
+  "title": "FAO Internship Programme",
+  "provider": "FAO",
+  "category": "Internship",
+  "url": "https://www.fao.org/employment/young-talent-programme/internship-programme/",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-028.html",
+  "processed_file": "OPP-028.txt",
+  "source_type": "html",
+  "characters": 2679,
+  "words": 404,
+  "raw_sha256": "3e1ca7c013a9dc2bbd56976a6c9123e9457ae0f45ace2aa7e4fb797ed436400e",
+  "parser": "beautifulsoup-lxml"
+}

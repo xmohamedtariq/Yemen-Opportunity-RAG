@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-007",
+  "title": "MAECI Scholarships for Foreign Students",
+  "provider": "Government of Italy",
+  "category": "Scholarship",
+  "url": "https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-007.html",
+  "processed_file": "OPP-007.txt",
+  "source_type": "html",
+  "characters": 3310,
+  "words": 453,
+  "raw_sha256": "b0cc84ba5035d7cb6ca04cca060b75ae77b12d9e1ab5ca46c90214f8586974c8",
+  "parser": "beautifulsoup-lxml"
+}

@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-034",
+  "title": "WTO Internship Opportunities",
+  "provider": "World Trade Organization",
+  "category": "Internship",
+  "url": "https://www.wto.org/english/thewto_e/vacan_e/vacan_e.htm",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-034.html",
+  "processed_file": "OPP-034.txt",
+  "source_type": "html",
+  "characters": 2920,
+  "words": 438,
+  "raw_sha256": "43c47291484f9edc90aa9f49869b80a78bd02f8bbb24c0f14094b1870b65dfad",
+  "parser": "beautifulsoup-lxml"
+}

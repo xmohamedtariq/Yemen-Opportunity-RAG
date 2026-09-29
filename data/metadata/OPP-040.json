@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-040",
+  "title": "Internet Society Fellowship Programs",
+  "provider": "Internet Society",
+  "category": "Tech Fellowship",
+  "url": "https://www.internetsociety.org/fellowship/",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-040.html",
+  "processed_file": "OPP-040.txt",
+  "source_type": "html",
+  "characters": 21542,
+  "words": 3030,
+  "raw_sha256": "64fda5be097f006870b37a2e2b4f4525e8ec1dbb006f8451b9cc2c06a05e09ba",
+  "parser": "beautifulsoup-lxml"
+}

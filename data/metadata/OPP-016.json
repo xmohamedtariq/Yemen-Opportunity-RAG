@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-016",
+  "title": "HBKU Scholarships",
+  "provider": "Hamad Bin Khalifa University",
+  "category": "Graduate Scholarship",
+  "url": "https://www.hbku.edu.qa/en/scholarship",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-016.html",
+  "processed_file": "OPP-016.txt",
+  "source_type": "html",
+  "characters": 4778,
+  "words": 741,
+  "raw_sha256": "7aeaf7bc6f49361c42f75a38c033736f7d8f9b27060f1d043d902d37575e2862",
+  "parser": "beautifulsoup-lxml"
+}

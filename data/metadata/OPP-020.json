@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-020",
+  "title": "Tomorrow's Leaders Program",
+  "provider": "American University in Cairo",
+  "category": "Scholarship",
+  "url": "https://www.aucegypt.edu/admissions/scholarships/tomorrows-leaders-undergraduate-program",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-020.html",
+  "processed_file": "OPP-020.txt",
+  "source_type": "html",
+  "characters": 6952,
+  "words": 983,
+  "raw_sha256": "b31ae3b4d4f9044d553a481f270742233f53343561acda5f136edda921e8e6c5",
+  "parser": "beautifulsoup-lxml"
+}

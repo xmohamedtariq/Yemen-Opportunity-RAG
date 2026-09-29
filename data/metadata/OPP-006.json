@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-006",
+  "title": "Romanian Government MFA Scholarship",
+  "provider": "Government of Romania",
+  "category": "Scholarship",
+  "url": "https://studyinromania.gov.ro/mfa_2026-2027",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-006.html",
+  "processed_file": "OPP-006.txt",
+  "source_type": "html",
+  "characters": 5455,
+  "words": 819,
+  "raw_sha256": "be10cbc3af6a68794f2fe8ee2b80c4b6488e2f8ce6c00d49c207abe7d44985b2",
+  "parser": "beautifulsoup-lxml"
+}

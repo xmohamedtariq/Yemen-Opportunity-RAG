@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-008",
+  "title": "Swiss Government Excellence Scholarships",
+  "provider": "Swiss Confederation",
+  "category": "Research Scholarship",
+  "url": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-008.html",
+  "processed_file": "OPP-008.txt",
+  "source_type": "html",
+  "characters": 4523,
+  "words": 629,
+  "raw_sha256": "761280a6c00c85eb13b3ec958265682e930ab77b5a75336c7cb87f16fa4b038a",
+  "parser": "beautifulsoup-lxml"
+}

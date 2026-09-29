@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-037",
+  "title": "FAO Fellows Programme",
+  "provider": "FAO",
+  "category": "Fellowship",
+  "url": "https://www.fao.org/employment/young-talent-programme/fellows-programme/en",
+  "last_verified": "2026-09-27",
+  "raw_file": "OPP-037.html",
+  "processed_file": "OPP-037.txt",
+  "source_type": "html",
+  "characters": 2060,
+  "words": 314,
+  "raw_sha256": "fb16aff7ec55db00786559435bc4512b97524a6c5592925cff97b8e5a5e36d17",
+  "parser": "beautifulsoup-lxml"
+}

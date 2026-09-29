@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-047",
+  "title": "UNOPS Jobs and Internship Opportunities",
+  "provider": "UNOPS",
+  "category": "Internship / Careers",
+  "url": "https://www.unops.org/jobs",
+  "last_verified": "2026-09-27",
+  "raw_file": "OPP-047.html",
+  "processed_file": "OPP-047.txt",
+  "source_type": "html",
+  "characters": 1780,
+  "words": 273,
+  "raw_sha256": "5a14be5a745d9b8c4684169a53acea041efc24fe00f20c39d5eec085cc7d9af1",
+  "parser": "beautifulsoup-lxml"
+}

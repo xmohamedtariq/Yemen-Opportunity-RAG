@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-030",
+  "title": "ILO Internship Opportunities",
+  "provider": "International Labour Organization",
+  "category": "Internship",
+  "url": "https://www.ilo.org/about-ilo/employment-opportunities",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-030.html",
+  "processed_file": "OPP-030.txt",
+  "source_type": "html",
+  "characters": 3072,
+  "words": 477,
+  "raw_sha256": "76d9be6d69c29f54a90f8346bef0a269c114590a9d7d1cd19e4c1934b0c1e8c3",
+  "parser": "beautifulsoup-lxml"
+}

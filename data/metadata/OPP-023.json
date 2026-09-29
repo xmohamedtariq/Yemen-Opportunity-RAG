@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-023",
+  "title": "Stipendium Hungaricum",
+  "provider": "Tempus Public Foundation",
+  "category": "Scholarship",
+  "url": "https://stipendiumhungaricum.hu/",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-023.html",
+  "processed_file": "OPP-023.txt",
+  "source_type": "html",
+  "characters": 3079,
+  "words": 469,
+  "raw_sha256": "983abbee2875f0227a1c3603250b9fc6d1b50a3fc889242362fdacfd1c4e5e2e",
+  "parser": "beautifulsoup-lxml"
+}

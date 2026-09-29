@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-048",
+  "title": "Hult Prize",
+  "provider": "Hult Prize Foundation",
+  "category": "Startup Competition",
+  "url": "https://www.hultprize.org/how-it-works",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-048.html",
+  "processed_file": "OPP-048.txt",
+  "source_type": "html",
+  "characters": 4202,
+  "words": 654,
+  "raw_sha256": "5aee983e9463b01ee9b267f5c334fbd9bb7a41a1a2568bd042cd5c2e3386d699",
+  "parser": "beautifulsoup-lxml"
+}

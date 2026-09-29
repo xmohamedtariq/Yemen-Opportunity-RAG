@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-046",
+  "title": "One Young World Scholarships",
+  "provider": "One Young World",
+  "category": "Leadership Scholarship",
+  "url": "https://www.oneyoungworld.com/scholarships",
+  "last_verified": "2026-09-26",
+  "raw_file": "OPP-046.html",
+  "processed_file": "OPP-046.txt",
+  "source_type": "html",
+  "characters": 5704,
+  "words": 891,
+  "raw_sha256": "27e9c21467fbf20dd458d673b5a2c8b05e1467bd6fcba859f473f2b24e1e7296",
+  "parser": "beautifulsoup-lxml"
+}

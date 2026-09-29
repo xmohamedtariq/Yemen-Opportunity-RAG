@@ -1,0 +1,15 @@
+{
+  "source_id": "OPP-009",
+  "title": "World Bank Group Young Professionals Program",
+  "provider": "World Bank Group",
+  "category": "Young Professionals",
+  "url": "https://www.worldbank.org/ext/en/careers/talent-programs/young-professionals-program",
+  "last_verified": "2026-09-27",
+  "raw_file": "OPP-009.html",
+  "processed_file": "OPP-009.txt",
+  "source_type": "html",
+  "characters": 21503,
+  "words": 3007,
+  "raw_sha256": "b5e71fcc711a20bab01eeef7d12947299a38a9c831fc6d7484dc660f56c8096d",
+  "parser": "beautifulsoup-lxml"
+}

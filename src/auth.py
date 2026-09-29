@@ -41,6 +41,9 @@ def get_current_user():
 
 
 def sign_in(email: str, password: str):
+    """
+    Sign in an existing user with email and password.
+    """
     supabase = get_supabase()
 
     response = supabase.auth.sign_in_with_password(
@@ -54,12 +57,27 @@ def sign_in(email: str, password: str):
 
 
 def sign_up(email: str, password: str):
+    """
+    Create a new Supabase account.
+
+    After the user confirms their email address,
+    Supabase redirects them back to the deployed
+    Yemen Opportunity Navigator application.
+    """
     supabase = get_supabase()
+
+    app_url = os.getenv(
+        "APP_URL",
+        "https://yemen-opportunity-navigator.streamlit.app",
+    ).strip()
 
     response = supabase.auth.sign_up(
         {
             "email": email.strip(),
             "password": password,
+            "options": {
+                "email_redirect_to": app_url,
+            },
         }
     )
 
@@ -67,6 +85,10 @@ def sign_up(email: str, password: str):
 
 
 def sign_out():
+    """
+    Sign the current user out and remove the
+    Supabase client from the Streamlit session.
+    """
     supabase = get_supabase()
 
     try:
@@ -138,7 +160,9 @@ def render_auth_sidebar():
 
             if login_submit:
                 if not login_email or not login_password:
-                    st.error("Please enter your email and password.")
+                    st.error(
+                        "Please enter your email and password."
+                    )
 
                 else:
                     try:
@@ -148,11 +172,15 @@ def render_auth_sidebar():
                         )
 
                         if response.user:
-                            st.success("Signed in successfully.")
+                            st.success(
+                                "Signed in successfully."
+                            )
                             st.rerun()
 
                         else:
-                            st.error("Unable to sign in.")
+                            st.error(
+                                "Unable to sign in."
+                            )
 
                     except Exception as exc:
                         error_message = str(exc)
@@ -161,10 +189,15 @@ def render_auth_sidebar():
                             st.warning(
                                 "Please verify your email address first."
                             )
-                        elif "Invalid login credentials" in error_message:
+
+                        elif (
+                            "Invalid login credentials"
+                            in error_message
+                        ):
                             st.error(
                                 "Incorrect email or password."
                             )
+
                         else:
                             st.error(
                                 f"Sign in failed: {error_message}"
@@ -201,10 +234,14 @@ def render_auth_sidebar():
             if register_submit:
 
                 if not register_email:
-                    st.error("Please enter an email address.")
+                    st.error(
+                        "Please enter an email address."
+                    )
 
                 elif not register_password:
-                    st.error("Please enter a password.")
+                    st.error(
+                        "Please enter a password."
+                    )
 
                 elif len(register_password) < 8:
                     st.error(
@@ -225,15 +262,19 @@ def render_auth_sidebar():
 
                         if response.session:
                             st.success(
-                                "Account created and signed in successfully."
+                                "Account created and signed in "
+                                "successfully."
                             )
                             st.rerun()
 
                         elif response.user:
                             st.success(
-                                "Account created. Check your email "
-                                "and click the verification link, "
-                                "then return here and sign in."
+                                "Account created successfully. "
+                                "Check your email and click the "
+                                "verification link. After verification, "
+                                "you will be redirected back to Yemen "
+                                "Opportunity Navigator. Then sign in "
+                                "with your email and password."
                             )
 
                         else:
@@ -244,22 +285,33 @@ def render_auth_sidebar():
                     except Exception as exc:
                         error_message = str(exc)
 
-                        if "already registered" in error_message.lower():
+                        if (
+                            "already registered"
+                            in error_message.lower()
+                        ):
                             st.warning(
-                                "An account with this email already exists."
+                                "An account with this email "
+                                "already exists."
                             )
-                        elif "email_address_not_authorized" in error_message:
+
+                        elif (
+                            "email_address_not_authorized"
+                            in error_message
+                        ):
                             st.error(
-                                "This email cannot receive verification "
-                                "emails with the current Supabase email setup."
+                                "This email cannot receive "
+                                "verification emails with the "
+                                "current Supabase email setup."
                             )
+
                         else:
                             st.error(
                                 f"Sign up failed: {error_message}"
                             )
 
         st.caption(
-            "You can continue using the opportunity search without an account."
+            "You can continue using the opportunity search "
+            "without an account."
         )
 
         return None

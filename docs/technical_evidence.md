@@ -1,8 +1,8 @@
 # Yemen Opportunity Navigator — Technical Evidence Report
 
-**Evidence snapshot:** 30 September–1 October 2026  
-**Repository branch:** `main`  
-**Evidence baseline commit:** `7435677`  
+**Evidence snapshot:** 30 September–1 October 2026
+**Repository branch:** `main`
+**Evidence baseline commit:** `7435677`
 **Purpose:** Provide a detailed, reproducible engineering record of the implemented RAG system, the decisions behind it, the measured results, the known limitations, and the evidence used to support each architectural claim.
 
 ---

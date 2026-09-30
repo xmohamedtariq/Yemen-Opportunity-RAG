@@ -12,22 +12,22 @@ Embedding model: `embed-multilingual-v3.0`
 
 | Metric | Valid samples | Score |
 |---|---:|---:|
-| Faithfulness | 20/20 | 0.8694 |
-| Answer Relevancy | 20/20 | 0.8095 |
+| Faithfulness | 20/20 | 0.9875 |
+| Answer Relevancy | 20/20 | 0.8227 |
 | Llm Context Precision With Reference | 20/20 | 1.0000 |
 | Context Recall | 20/20 | 1.0000 |
-| **Overall mean (project summary)** | - | **0.9197** |
+| **Overall mean (project summary)** | - | **0.9526** |
 
 ## Results by Language
 
 | Language | Metric | Score |
 |---|---|---:|
-| ar | Faithfulness | 0.9183 |
-| ar | Answer Relevancy | 0.7824 |
+| ar | Faithfulness | 1.0000 |
+| ar | Answer Relevancy | 0.8108 |
 | ar | Llm Context Precision With Reference | 1.0000 |
 | ar | Context Recall | 1.0000 |
-| en | Faithfulness | 0.8205 |
-| en | Answer Relevancy | 0.8367 |
+| en | Faithfulness | 0.9750 |
+| en | Answer Relevancy | 0.8347 |
 | en | Llm Context Precision With Reference | 1.0000 |
 | en | Context Recall | 1.0000 |
 

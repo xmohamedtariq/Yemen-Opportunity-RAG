@@ -224,3 +224,9 @@ __pycache__/
 data/raw/
 data/processed/
 .streamlit/secrets.toml
+
+# RAGAS local evaluation cache / baselines
+evaluation/ragas_dataset_cache.json
+evaluation/ragas_dataset_cache_baseline.json
+evaluation/ragas_results_baseline.csv
+evaluation/ragas_summary_baseline.md

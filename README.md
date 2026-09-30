@@ -1,4 +1,4 @@
-# Yemen Opportunity Navigator
+# Yemen Opportunity Navigator RAG
 
 A bilingual, evidence-grounded Retrieval-Augmented Generation (RAG) system for helping Yemeni youth discover scholarships, fellowships, internships, training programs, grants, competitions, startup accelerators, and selected remote/technology opportunities from trusted official sources.
 

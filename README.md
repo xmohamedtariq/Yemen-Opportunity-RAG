@@ -676,6 +676,7 @@ Yemen-Opportunity-RAG/
 |   `-- chroma/
 |
 |-- docs/
+|   |-- Yemen_Opportunity_Navigator_RAG_Architecture_Decision_Record.pdf
 |   |-- technical_evidence.md
 |   |-- generate_architecture_diagram.py
 |   |-- generate_evidence_charts.py

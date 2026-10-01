@@ -892,10 +892,10 @@ Detailed implemented architecture, retrieval pipeline, RAGAS results, cost evide
 
 ### Architecture Decision Record
 
-[`ADR.md`](ADR.md)
+- [One-Page ADR — PDF](docs/Yemen_Opportunity_Navigator_RAG_Architecture_Decision_Record.pdf)
+- [Detailed ADR — Markdown](ADR.md)
 
-Concise decision record explaining why the final architecture uses multilingual vector retrieval + BM25 + RRF + reranking + top-5 grounded context + two-pass generation.
-
+The one-page PDF is the final submission version. The Markdown file contains the detailed repository record.
 ### Technical Evidence
 
 [`docs/technical_evidence.md`](docs/technical_evidence.md)

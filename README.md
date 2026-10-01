@@ -2,8 +2,10 @@
 
 A bilingual, evidence-grounded Retrieval-Augmented Generation (RAG) system for helping Yemeni youth discover scholarships, fellowships, internships, training programs, grants, competitions, startup accelerators, and selected remote/technology opportunities from trusted official sources.
 
-----
+---
+
 ## Live Demo
+
 **Streamlit:** [https://yemen-opportunity-navigator.streamlit.app](https://yemen-opportunity-navigator.streamlit.app)  
 **Hugging Face:** [https://huggingface.co/spaces/xmohamedtariq/Yemen-Opportunity-Navigator](https://huggingface.co/spaces/xmohamedtariq/Yemen-Opportunity-Navigator)  
 **GitHub Repository:** [https://github.com/xmohamedtariq/Yemen_Opportunity_Navigator_RAG](https://github.com/xmohamedtariq/Yemen_Opportunity_Navigator_RAG)
@@ -26,7 +28,8 @@ It combines:
 - top-5 grounded evidence selection;
 - two-pass Command A generation;
 - structured source attribution;
-- Streamlit deployment;
+- Streamlit Community Cloud deployment;
+- Hugging Face Spaces public presentation mirror;
 - Supabase authentication;
 - Recall@5 evaluation;
 - RAGAS evaluation;
@@ -477,16 +480,16 @@ Project arithmetic summary:
 
 ### Interpretation
 
-**Context Precision = 1.0000**
+**Context Precision = 1.0000**  
 Relevant evidence is ranked strongly among retrieved contexts.
 
-**Context Recall = 1.0000**
+**Context Recall = 1.0000**  
 The retrieved evidence covers the information required by the reference answers.
 
-**Faithfulness = 0.9875**
+**Faithfulness = 0.9875**  
 Generated claims are almost entirely supported by retrieved evidence.
 
-**Answer Relevancy = 0.8227**
+**Answer Relevancy = 0.8227**  
 This is the primary measured quality improvement area. Future work should make answers more direct without sacrificing grounding.
 
 ---
@@ -593,14 +596,16 @@ The application includes Supabase-based authentication and session management.
 
 Current capabilities include:
 
-- sign up;
-- login;
-- email verification flow;
+- user registration;
+- email/password sign-in;
 - session handling;
 - username metadata;
-- authenticated application experience.
+- authenticated saved opportunities and search history;
+- direct account access without requiring an email-confirmation step in the current capstone demo configuration.
 
 Authentication is kept separate from the RAG retrieval/generation logic.
+
+The current configuration prioritizes a frictionless public capstone demo; production deployments should re-enable stronger email-verification controls where appropriate.
 
 ---
 
@@ -643,9 +648,12 @@ Authentication is kept separate from the RAG retrieval/generation logic.
 
 ### Deployment / Version Control
 
-- Streamlit Community Cloud
-- GitHub
-- Supabase
+- Streamlit Community Cloud — primary application hosting
+- Hugging Face Spaces — public static presentation mirror
+- GitHub — source code and version control
+- Supabase — authentication and user data
+
+> The Hugging Face Space is a static public presentation layer that embeds the deployed Streamlit application. The RAG backend itself continues to run on Streamlit Community Cloud rather than Hugging Face compute.
 
 ---
 
@@ -1053,23 +1061,31 @@ Key Git milestones include:
 
 ## Capstone Deliverables
 
-This repository contains the major engineering deliverables for the project:
+The five required final deliverables are available as follows:
 
-- public GitHub repository;
-- live Streamlit demo;
+1. **Public GitHub Repository:** [Yemen Opportunity Navigator RAG](https://github.com/xmohamedtariq/Yemen_Opportunity_Navigator_RAG)
+
+2. **Live Demo:** [Streamlit Community Cloud](https://yemen-opportunity-navigator.streamlit.app)  
+   **Additional public access:** [Hugging Face Space](https://huggingface.co/spaces/xmohamedtariq/Yemen-Opportunity-Navigator)
+
+3. **One-Page Architecture Decision Record:** [`ADR.md`](ADR.md)
+
+4. **RAGAS Evaluation on 20 Questions:** 10 Arabic + 10 English, documented in [`evaluation/ragas_summary.md`](evaluation/ragas_summary.md) and the RAGAS section above.
+
+5. **Cost Analysis for 1K / 10K / 100K Queries:** documented in [`cost_analysis.md`](cost_analysis.md) and the cost-scaling section above.
+
+Additional engineering evidence in the repository includes:
+
 - domain definition;
 - ingestion pipeline;
 - architecture documentation;
-- Architecture Decision Record;
 - hybrid retrieval + reranking;
 - 30-question golden retrieval set;
 - Recall@5 evaluation;
-- RAGAS evaluation;
-- cost analysis;
 - latency evidence;
 - technical evidence report;
 - reproducible charts;
-- deployment;
+- public deployment;
 - authentication.
 
 ---

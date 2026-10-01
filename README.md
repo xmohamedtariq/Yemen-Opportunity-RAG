@@ -1068,7 +1068,7 @@ The five required final deliverables are available as follows:
 2. **Live Demo:** [Streamlit Community Cloud](https://yemen-opportunity-navigator.streamlit.app)  
    **Additional public access:** [Hugging Face Space](https://huggingface.co/spaces/xmohamedtariq/Yemen-Opportunity-Navigator)
 
-3. **One-Page Architecture Decision Record:** [`ADR.md`](ADR.md)
+3. **One-Page Architecture Decision Record:** [PDF](docs/Yemen_Opportunity_Navigator_RAG_Architecture_Decision_Record.pdf) — [Markdown version](ADR.md)
 
 4. **RAGAS Evaluation on 20 Questions:** 10 Arabic + 10 English, documented in [`evaluation/ragas_summary.md`](evaluation/ragas_summary.md) and the RAGAS section above.
 

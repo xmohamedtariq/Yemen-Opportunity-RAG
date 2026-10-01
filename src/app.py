@@ -1345,6 +1345,149 @@ ui_html(
 
 
     /* ======================================================
+       SIGNED-IN ACCOUNT
+    ====================================================== */
+
+    .account-chip {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            11px;
+
+        min-height:
+            52px;
+
+        padding:
+            6px 14px 6px 7px;
+
+        border:
+            1px solid
+            #DCE7E2;
+
+        border-radius:
+            15px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #FFFFFF,
+                #F5FAF8
+            );
+
+        box-shadow:
+            0 7px 22px
+            rgba(16, 55, 40, 0.05);
+    }
+
+
+    .account-avatar {
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        flex:
+            0 0 40px;
+
+        border-radius:
+            12px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #0F7A5A,
+                #25A77A
+            );
+
+        color:
+            #FFFFFF;
+
+        font-size:
+            0.95rem;
+
+        font-weight:
+            800;
+
+        box-shadow:
+            0 6px 16px
+            rgba(15, 122, 90, 0.18);
+    }
+
+
+    .account-text {
+
+        min-width:
+            0;
+
+        flex:
+            1;
+    }
+
+
+    .account-label {
+
+        color:
+            #7A8A82;
+
+        font-size:
+            0.62rem;
+
+        font-weight:
+            650;
+
+        letter-spacing:
+            0.035em;
+
+        line-height:
+            1.15;
+    }
+
+
+    .account-name {
+
+        margin-top:
+            3px;
+
+        color:
+            #173229;
+
+        font-size:
+            0.92rem;
+
+        font-weight:
+            760;
+
+        line-height:
+            1.2;
+
+        white-space:
+            nowrap;
+
+        overflow:
+            hidden;
+
+        text-overflow:
+            ellipsis;
+    }
+
+
+    /* ======================================================
        RESPONSIVE
     ====================================================== */
 
@@ -1376,6 +1519,42 @@ ui_html(
 
 
     @media(max-width:768px) {
+
+        .account-chip {
+
+            min-height:
+                48px;
+
+            padding:
+                5px 10px 5px 6px;
+
+            border-radius:
+                13px;
+        }
+
+
+        .account-avatar {
+
+            width:
+                36px;
+
+            height:
+                36px;
+
+            flex-basis:
+                36px;
+
+            border-radius:
+                11px;
+        }
+
+
+        .account-name {
+
+            font-size:
+                0.84rem;
+        }
+
 
         .block-container {
 
@@ -2900,7 +3079,7 @@ def sign_up_dialog():
         username = (
             st.text_input(
                 "Username",
-                placeholder="mohammed_tariq",
+                placeholder="Choose a username",
                 help=(
                     "3-24 characters. Use letters, "
                     "numbers and underscores only."
@@ -3232,9 +3411,10 @@ with account_col:
         user_col, logout_col = (
             st.columns(
                 [
-                    1.8,
+                    2.25,
                     1,
-                ]
+                ],
+                vertical_alignment="center",
             )
         )
 
@@ -3245,22 +3425,72 @@ with account_col:
                 get_username(
                     current_user
                 )
-            )
-
-
-            st.markdown(
-                f"**@{username}**"
-            )
-
-
-            st.caption(
-                getattr(
-                    current_user,
-                    "email",
-                    None,
-                )
                 or
-                "Signed in"
+                "Member"
+            )
+
+
+            display_name = (
+                str(
+                    username
+                )
+                .replace(
+                    "_",
+                    " ",
+                )
+                .strip()
+                .title()
+            )
+
+
+            avatar_letter = (
+                display_name[
+                    0
+                ].upper()
+
+                if display_name
+
+                else
+                "U"
+            )
+
+
+            safe_display_name = (
+                html.escape(
+                    display_name
+                )
+            )
+
+
+            safe_avatar_letter = (
+                html.escape(
+                    avatar_letter
+                )
+            )
+
+
+            ui_html(
+                f"""
+                <div class="account-chip">
+
+                    <div class="account-avatar">
+                        {safe_avatar_letter}
+                    </div>
+
+                    <div class="account-text">
+
+                        <div class="account-label">
+                            WELCOME BACK
+                        </div>
+
+                        <div class="account-name">
+                            {safe_display_name}
+                        </div>
+
+                    </div>
+
+                </div>
+                """
             )
 
 

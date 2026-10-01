@@ -2,8 +2,9 @@
 
 A bilingual, evidence-grounded Retrieval-Augmented Generation (RAG) system for helping Yemeni youth discover scholarships, fellowships, internships, training programs, grants, competitions, startup accelerators, and selected remote/technology opportunities from trusted official sources.
 
-**Live Demo:** https://yemen-opportunity-navigator.streamlit.app
-**GitHub Repository:** https://github.com/xmohamedtariq/Yemen_Opportunity_Navigator_RAG
+**Live Demo (Streamlit):** [https://yemen-opportunity-navigator.streamlit.app](https://yemen-opportunity-navigator.streamlit.app)  
+**Hugging Face Space:** [https://huggingface.co/spaces/xmohamedtariq/Yemen-Opportunity-Navigator](https://huggingface.co/spaces/xmohamedtariq/Yemen-Opportunity-Navigator)  
+**GitHub Repository:** [https://github.com/xmohamedtariq/Yemen_Opportunity_Navigator_RAG](https://github.com/xmohamedtariq/Yemen_Opportunity_Navigator_RAG)
 
 ---
 

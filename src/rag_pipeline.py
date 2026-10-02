@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import html
+import logging
 import os
 import re
 import sys
@@ -10,6 +11,17 @@ import cohere
 from dotenv import load_dotenv
 
 from reranker import CohereReranker
+from provider_utils import (
+    is_quota_exhausted,
+    is_retryable_provider_error,
+    public_failure_reason,
+    retry_after_seconds,
+)
+
+
+logger = logging.getLogger(
+    "yemen_opportunity.rag"
+)
 
 
 # ============================================================
@@ -78,7 +90,7 @@ TEMPERATURE = float(
 MAX_RETRIES = int(
     os.getenv(
         "RAG_MAX_RETRIES",
-        "4",
+        "2",
     )
 )
 
@@ -92,7 +104,7 @@ MAX_QUERY_CHARS = int(
 ENABLE_ANSWER_REVIEW = (
     os.getenv(
         "RAG_ENABLE_ANSWER_REVIEW",
-        "1",
+        "0",
     ).strip()
     != "0"
 )
@@ -159,23 +171,48 @@ def retry_call(
 
             last_error = error
 
+            # A monthly/trial quota cannot recover by waiting a few
+            # seconds. Repeating the request only consumes time and can
+            # create a burst of additional failed calls.
+            if is_quota_exhausted(
+                error
+            ):
+
+                logger.warning(
+                    "%s stopped because the provider quota was reached.",
+                    label,
+                )
+
+                raise
+
+
+            # Retry only genuinely transient provider/network failures.
+            # Validation, authentication and other permanent 4xx errors
+            # should fail immediately.
+            if not is_retryable_provider_error(
+                error
+            ):
+
+                raise
+
             if attempt >= MAX_RETRIES:
                 break
 
-            wait_seconds = min(
-                2 ** attempt,
-                20,
+            wait_seconds = retry_after_seconds(
+                error,
+                default=min(
+                    2 ** attempt,
+                    20,
+                ),
+                maximum=20.0,
             )
 
-            print(
-                f"[WARNING] {label} failed "
-                f"(attempt {attempt}/{MAX_RETRIES}): "
-                f"{error}"
-            )
-
-            print(
-                f"          Retrying in "
-                f"{wait_seconds}s..."
+            logger.warning(
+                "%s failed (attempt %s/%s). Retrying in %.1fs.",
+                label,
+                attempt,
+                MAX_RETRIES,
+                wait_seconds,
             )
 
             time.sleep(
@@ -1859,26 +1896,115 @@ Output only the final answer.
                 draft_answer
             )
 
+        # The review pass is quality-enhancing but not required to
+        # answer the user. If it is rate-limited or temporarily
+        # unavailable, keep the already-grounded draft instead of
+        # failing the whole search.
+        try:
 
-        reviewed_answer = (
-            self.review_answer(
+            reviewed_answer = (
+                self.review_answer(
 
-                query=query,
+                    query=query,
 
-                context=context,
+                    context=context,
 
-                draft_answer=
-                    draft_answer,
+                    draft_answer=
+                        draft_answer,
 
-                language=
-                    language,
+                    language=
+                        language,
+                )
             )
-        )
 
 
-        return (
-            reviewed_answer
+            return (
+                reviewed_answer
+            )
+
+        except Exception as error:
+
+            logger.warning(
+                "Answer review skipped because the provider "
+                "was unavailable: %s",
+                type(error).__name__,
+            )
+
+            return (
+                draft_answer
+            )
+
+
+    # ========================================================
+    # GENERATION FALLBACK
+    # ========================================================
+
+    @staticmethod
+    def build_generation_fallback(
+        sources,
+        language: str,
+    ) -> str:
+        """Create a truthful non-LLM response when generation is down.
+
+        Retrieval results and official source links remain useful even
+        when the text-generation endpoint is temporarily unavailable.
+        The fallback intentionally avoids inventing eligibility,
+        deadlines or funding details.
+        """
+
+        clean_sources = [
+            source
+            for source in (sources or [])
+            if isinstance(source, dict)
+        ]
+
+        labels = []
+
+        for source in clean_sources[:3]:
+
+            title = str(
+                source.get("title")
+                or ""
+            ).strip()
+
+            provider = str(
+                source.get("provider")
+                or ""
+            ).strip()
+
+            if title and provider:
+                label = f"{title} — {provider}"
+            else:
+                label = title or provider
+
+            if label:
+                labels.append(label)
+
+        if language == "ar":
+
+            message = (
+                "وجدت مصادر رسمية ذات صلة بسؤالك، "
+                "لكن تعذر إنشاء الملخص الذكي مؤقتاً. "
+                "يمكنك متابعة المصادر أدناه والتحقق من "
+                "التفاصيل مباشرة من الجهة الرسمية."
+            )
+
+            if labels:
+                message += "\n\nأبرز النتائج:\n- " + "\n- ".join(labels)
+
+            return message
+
+        message = (
+            "I found relevant official sources, but the AI summary "
+            "is temporarily unavailable. You can still review the "
+            "sources below and verify the details directly with the "
+            "official provider."
         )
+
+        if labels:
+            message += "\n\nTop matches:\n- " + "\n- ".join(labels)
+
+        return message
 
 
     # ========================================================
@@ -2215,26 +2341,7 @@ Output only the final answer.
 
 
         # ----------------------------------------------------
-        # GENERATE + REVIEW ANSWER
-        # ----------------------------------------------------
-
-        answer = (
-            self.generate_answer(
-
-                query=
-                    query,
-
-                context=
-                    context,
-
-                language=
-                    language,
-            )
-        )
-
-
-        # ----------------------------------------------------
-        # BUILD SOURCE CARDS
+        # BUILD SOURCE CARDS BEFORE GENERATION
         # ----------------------------------------------------
 
         sources = (
@@ -2242,6 +2349,54 @@ Output only the final answer.
                 public_results
             )
         )
+
+
+        # ----------------------------------------------------
+        # GENERATE + REVIEW ANSWER
+        # ----------------------------------------------------
+
+        generation_available = True
+        generation_error_reason = None
+
+        try:
+
+            answer = (
+                self.generate_answer(
+
+                    query=
+                        query,
+
+                    context=
+                        context,
+
+                    language=
+                        language,
+                )
+            )
+
+        except Exception as error:
+
+            generation_available = False
+
+            generation_error_reason = (
+                public_failure_reason(
+                    error
+                )
+            )
+
+            logger.warning(
+                "Answer generation unavailable; returning retrieved "
+                "sources instead. reason=%s error=%s",
+                generation_error_reason,
+                type(error).__name__,
+            )
+
+            answer = (
+                self.build_generation_fallback(
+                    sources=sources,
+                    language=language,
+                )
+            )
 
 
         latency = (
@@ -2265,6 +2420,12 @@ Output only the final answer.
 
             "sources":
                 sources,
+
+            "generation_available":
+                generation_available,
+
+            "generation_error_reason":
+                generation_error_reason,
 
             "retrieved_chunks":
                 retrieved,

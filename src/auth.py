@@ -4,6 +4,7 @@ import re
 import streamlit as st
 from dotenv import load_dotenv
 from supabase import create_client
+from supabase.lib.client_options import ClientOptions
 
 
 load_dotenv()
@@ -19,6 +20,9 @@ APP_URL = os.getenv(
 ).strip().rstrip("/")
 
 USERNAME_PATTERN = re.compile(r"^[A-Za-z0-9_]{3,24}$")
+
+AUTH_USER_KEY = "_auth_user_cache"
+AUTH_USER_CACHED_KEY = "_auth_user_cache_ready"
 
 
 # =========================================================
@@ -44,6 +48,14 @@ def get_supabase():
         st.session_state.supabase_client = create_client(
             url,
             key,
+            options=ClientOptions(
+                # Streamlit is a server-side runtime. A background token
+                # refresh thread can outlive reruns/reconnections and was
+                # creating a rapid refresh-token loop in production logs.
+                # Keep refresh under explicit user actions instead.
+                auto_refresh_token=False,
+                persist_session=False,
+            ),
         )
 
     return st.session_state.supabase_client
@@ -59,13 +71,31 @@ def get_current_user():
     Return None for guests.
     """
 
+    if st.session_state.get(
+        AUTH_USER_CACHED_KEY,
+        False,
+    ):
+        return st.session_state.get(
+            AUTH_USER_KEY
+        )
+
     try:
         supabase = get_supabase()
         response = supabase.auth.get_user()
-        return response.user
+        user = response.user
 
     except Exception:
-        return None
+        user = None
+
+    st.session_state[
+        AUTH_USER_KEY
+    ] = user
+
+    st.session_state[
+        AUTH_USER_CACHED_KEY
+    ] = True
+
+    return user
 
 
 def get_username(user):
@@ -113,6 +143,14 @@ def sign_in(email: str, password: str):
         }
     )
 
+    st.session_state[
+        AUTH_USER_KEY
+    ] = response.user
+
+    st.session_state[
+        AUTH_USER_CACHED_KEY
+    ] = True
+
     return response
 
 
@@ -154,6 +192,15 @@ def sign_up(
             },
         }
     )
+
+    if response.session and response.user:
+        st.session_state[
+            AUTH_USER_KEY
+        ] = response.user
+
+        st.session_state[
+            AUTH_USER_CACHED_KEY
+        ] = True
 
     return response
 
@@ -228,6 +275,14 @@ def handle_email_confirmation():
                 response.session.refresh_token,
             )
 
+        st.session_state[
+            AUTH_USER_KEY
+        ] = response.user
+
+        st.session_state[
+            AUTH_USER_CACHED_KEY
+        ] = True
+
         # Remove sensitive verification data
         # from the browser URL.
         st.query_params.clear()
@@ -270,6 +325,21 @@ def sign_out():
             del st.session_state[
                 "supabase_client"
             ]
+
+        st.session_state.pop(
+            AUTH_USER_KEY,
+            None,
+        )
+
+        st.session_state.pop(
+            AUTH_USER_CACHED_KEY,
+            None,
+        )
+
+        st.session_state.pop(
+            "_loaded_user_id",
+            None,
+        )
 
 
 # =========================================================

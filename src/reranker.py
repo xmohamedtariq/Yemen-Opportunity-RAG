@@ -1,10 +1,16 @@
 from pathlib import Path
+import logging
 import os
 
 import cohere
 from dotenv import load_dotenv
 
 from hybrid_retriever import HybridRetriever
+
+
+logger = logging.getLogger(
+    "yemen_opportunity.reranker"
+)
 
 
 # ---------------------------------------------------------
@@ -237,18 +243,75 @@ class CohereReranker:
             )
         )
 
+        if not candidates:
+            return []
+
         # -------------------------------------------------
         # Stage 2:
         # Cohere multilingual reranking
         # -------------------------------------------------
 
-        reranked = self.rerank(
-            query=query,
-            candidates=candidates,
-            top_n=top_n,
+        reranker_enabled = (
+            os.getenv(
+                "RAG_ENABLE_RERANKER",
+                "1",
+            ).strip()
+            != "0"
         )
 
-        return reranked
+        if reranker_enabled:
+
+            try:
+
+                reranked = self.rerank(
+                    query=query,
+                    candidates=candidates,
+                    top_n=top_n,
+                )
+
+                return reranked
+
+            except Exception as error:
+
+                logger.warning(
+                    "Cohere reranking unavailable; using hybrid "
+                    "ranking instead. error=%s",
+                    type(error).__name__,
+                )
+
+        # Reranking is an enhancement, not a hard dependency. Preserve
+        # the best hybrid/BM25 candidates if the provider is unavailable
+        # or reranking is intentionally disabled to save API calls.
+        fallback = []
+
+        for position, candidate in enumerate(
+            candidates[:top_n],
+            start=1,
+        ):
+
+            item = dict(candidate)
+
+            item[
+                "hybrid_rank"
+            ] = position
+
+            item[
+                "rerank_rank"
+            ] = None
+
+            item[
+                "rerank_score"
+            ] = None
+
+            item[
+                "rerank_fallback"
+            ] = True
+
+            fallback.append(
+                item
+            )
+
+        return fallback
 
 
 # ---------------------------------------------------------

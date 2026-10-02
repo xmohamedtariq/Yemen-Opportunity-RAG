@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+import logging
 import os
 import re
 
@@ -11,6 +12,11 @@ from build_vector_store import (
     CohereMultilingualEmbeddings,
     EMBEDDING_MODEL,
     COLLECTION_NAME,
+)
+
+
+logger = logging.getLogger(
+    "yemen_opportunity.retriever"
 )
 
 
@@ -494,19 +500,38 @@ class HybridRetriever:
         final_k=FINAL_K,
     ):
 
-        vector_results = (
-            self.vector_search(
-                query,
-                k=vector_k,
-            )
-        )
-
         bm25_results = (
             self.bm25_search(
                 query,
                 k=bm25_k,
             )
         )
+
+        # BM25 is fully local, so keep it as a dependable fallback.
+        # If query embeddings are rate-limited or the embedding API is
+        # temporarily unavailable, the user should still receive useful
+        # keyword-based results instead of a failed search.
+        try:
+
+            vector_results = (
+                self.vector_search(
+                    query,
+                    k=vector_k,
+                )
+            )
+
+            retrieval_mode = "hybrid"
+
+        except Exception as error:
+
+            logger.warning(
+                "Vector search unavailable; falling back to BM25. "
+                "error=%s",
+                type(error).__name__,
+            )
+
+            vector_results = []
+            retrieval_mode = "bm25_fallback"
 
         final_results = (
             self.reciprocal_rank_fusion(
@@ -515,6 +540,11 @@ class HybridRetriever:
                 final_k=final_k,
             )
         )
+
+        for result in final_results:
+            result[
+                "retrieval_mode"
+            ] = retrieval_mode
 
         return final_results
 

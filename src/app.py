@@ -2132,6 +2132,24 @@ def load_rag():
     )
 
 
+@st.cache_data(
+    show_spinner=False,
+    ttl=300,
+    max_entries=100,
+)
+def cached_rag_search(
+    query: str,
+):
+    """Reuse identical public RAG queries briefly to save API calls."""
+
+    return (
+        load_rag()
+        .ask(
+            query
+        )
+    )
+
+
 # ============================================================
 # LOAD OPPORTUNITY DATA
 # ============================================================
@@ -3651,8 +3669,7 @@ def run_search(
         ):
 
             result = (
-                load_rag()
-                .ask(
+                cached_rag_search(
                     query
                 )
             )
@@ -3855,6 +3872,40 @@ def render_answer() -> None:
     if not result:
 
         return
+
+
+    generation_available = (
+        result.get(
+            "generation_available",
+            True,
+        )
+    )
+
+
+    if generation_available is False:
+
+        if (
+            result.get(
+                "language",
+                "en",
+            )
+            ==
+            "ar"
+        ):
+
+            st.warning(
+                "الملخص الذكي غير متاح مؤقتاً، "
+                "لكن البحث نجح ويمكنك مراجعة "
+                "المصادر الرسمية المسترجعة أدناه."
+            )
+
+        else:
+
+            st.warning(
+                "The AI summary is temporarily unavailable, "
+                "but retrieval succeeded. You can still review "
+                "the official sources below."
+            )
 
 
     ui_html(

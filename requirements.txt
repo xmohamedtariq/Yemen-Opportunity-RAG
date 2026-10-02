@@ -102,7 +102,7 @@ pillow==12.3.0
 postgrest==2.31.0
 propcache==0.5.4
 protobuf==7.36.2
-pyarrow==25.0.1
+pyarrow==24.0.0
 pybase64==1.5.0
 pycparser==3.0
 pydantic==2.13.5

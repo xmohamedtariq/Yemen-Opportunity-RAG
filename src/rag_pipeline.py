@@ -1960,7 +1960,7 @@ Output only the final answer.
 
         labels = []
 
-        for source in clean_sources[:3]:
+        for source in clean_sources:
 
             title = str(
                 source.get("title")

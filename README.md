@@ -1104,6 +1104,10 @@ The five required final deliverables are available as follows:
 
 5. **Cost Analysis for 1K / 10K / 100K Queries:** documented in [`cost_analysis.md`](cost_analysis.md) and the cost-scaling section above.
 
+### Additional Validation
+
+**Real User Testing:** [View the 4-user testing report](docs/user_testing.md)
+
 Additional engineering evidence in the repository includes:
 
 - domain definition;

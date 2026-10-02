@@ -35,6 +35,7 @@ It combines:
 - RAGAS evaluation;
 - measured API cost profiling;
 - latency profiling;
+- four-user cross-device usability testing;
 - reproducible engineering evidence and charts.
 
 ---
@@ -58,6 +59,8 @@ It combines:
 | P95 generation cost/query | **$0.02205750** |
 | P50 end-to-end latency | **10.945 s** |
 | P95 end-to-end latency | **32.381 s** |
+| User testing participants | **4** |
+| User testing average rating | **9.875/10 (98.75%)** |
 
 > The `0.9526` value is a project-level arithmetic summary of the four RAGAS metric averages. It is not a separate canonical RAGAS metric.
 
@@ -609,6 +612,25 @@ The current configuration prioritizes a frictionless public capstone demo; produ
 
 ---
 
+## User Testing
+
+The final deployed application was tested by **4 real users** across mobile and desktop devices, with both authenticated and guest usage paths represented.
+
+| User | Device | Access mode | Arabic search | English search | Reviewed main sections | Rating |
+|---|---|---|---:|---:|---:|---:|
+| User 1 | Mobile | Authenticated | Yes | Yes | Yes | **10/10** |
+| User 2 | Mobile | Guest | Yes | Yes | Yes | **10/10** |
+| User 3 | Desktop | Authenticated | Yes | Yes | Yes | **10/10** |
+| User 4 | Desktop | Guest | Yes | Yes | Yes | **9.5/10** |
+
+Average rating across the four testers: **9.875/10 (98.75%)**.
+
+All four testers successfully used the application in Arabic and English and reviewed the main sections of the interface. One tester suggested that a dark color theme would be preferable; this was recorded as a visual preference rather than a functional issue.
+
+Detailed user-testing notes are documented in [`docs/user_testing.md`](docs/user_testing.md).
+
+---
+
 ## Technology Stack
 
 ### Application
@@ -678,6 +700,7 @@ Yemen-Opportunity-RAG/
 |-- docs/
 |   |-- Yemen_Opportunity_Navigator_RAG_Architecture_Decision_Record.pdf
 |   |-- technical_evidence.md
+|   |-- user_testing.md
 |   |-- generate_architecture_diagram.py
 |   |-- generate_evidence_charts.py
 |   `-- charts/
@@ -915,6 +938,12 @@ Investor-oriented cost analysis covering measured generation economics, scaling 
 
 Project problem, target users, knowledge categories, corpus definition, languages, architecture, and measured evaluation summary.
 
+### User Testing
+
+[`docs/user_testing.md`](docs/user_testing.md)
+
+Four-user usability test covering mobile and desktop devices, authenticated and guest access, Arabic and English searches, section review, and tester feedback.
+
 ---
 
 ## Engineering Decisions
@@ -1087,7 +1116,8 @@ Additional engineering evidence in the repository includes:
 - technical evidence report;
 - reproducible charts;
 - public deployment;
-- authentication.
+- authentication;
+- four-user cross-device usability testing.
 
 ---
 

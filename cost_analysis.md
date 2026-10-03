@@ -27,7 +27,7 @@ Every financial number in this document is classified as one of the following:
 
 | Label | Meaning |
 |---|---|
-| **MEASURED** | Directly observed from the running Yemen Opportunity Navigator production RAG path |
+| **MEASURED** | Directly observed from the evaluated Yemen Opportunity Navigator benchmark path |
 | **OFFICIAL** | Current published provider price or quota checked on 30 September 2026 |
 | **CALCULATED** | Arithmetic derived from measured usage and/or official prices |
 | **ASSUMPTION** | Planning scenario used for sensitivity analysis; not claimed as current actual spend |
@@ -38,18 +38,19 @@ This distinction is important because a $0 prototype invoice is not the same thi
 
 ## 2. Current Architecture Relevant to Cost
 
-A production-style user query currently passes through:
+The current public default query path passes through:
 
 1. One Cohere `embed-multilingual-v3.0` query embedding.
 2. Local Chroma vector retrieval.
 3. Local BM25 keyword retrieval.
 4. One Cohere `rerank-multilingual-v3.0` rerank operation.
-5. Two Cohere `command-a-03-2025` Chat calls:
-   - grounded draft generation;
-   - final faithfulness/relevance refinement.
-6. Streamlit Community Cloud for the application.
-7. Supabase for authentication and user-related data.
-8. GitHub for source control and deployment integration.
+5. One Cohere `command-a-03-2025` Chat call for grounded draft generation.
+6. An optional second Command A review pass when `RAG_ENABLE_ANSWER_REVIEW=1`.
+7. Streamlit Community Cloud for the application.
+8. Supabase for authentication and user-related data.
+9. GitHub for source control and deployment integration.
+
+The published RAGAS, generation-cost, and latency evidence was collected with the optional review pass enabled, so those benchmark results reflect **two Chat calls per query**.
 
 Chroma and BM25 have **no separate SaaS invoice** in the current architecture. On paid hosting they still consume RAM, CPU, and disk, so their infrastructure cost is included indirectly in hosting resource usage rather than being truly resource-free.
 
@@ -87,7 +88,7 @@ Cohere currently documents a **1,000 API-call/month** trial limit.
 
 ### 4.2 Calls consumed by one normal query
 
-The measured production path normally performs:
+The historical cost/evaluation run measured this two-pass profile:
 
 | API operation | Calls/query |
 |---|---:|
@@ -95,21 +96,21 @@ The measured production path normally performs:
 | Rerank | 1 |
 | Command A draft | 1 |
 | Command A refinement | 1 |
-| **Total** | **4** |
+| **Historical evaluated total** | **4** |
 
-Therefore the theoretical trial ceiling is:
+That profile implies a theoretical trial ceiling of:
 
 `1,000 API calls / 4 calls per query = 250 complete queries/month`
 
-**CALCULATED theoretical ceiling: ~250 normal queries/month.**
+The public deployment now defaults to `RAG_ENABLE_ANSWER_REVIEW=0`. A normal successful query therefore uses one Embed call, one Rerank call, and one Chat call (**3 API calls/query**), implying a simple theoretical ceiling of about **333 complete queries/month** under a 1,000-call aggregate allowance.
 
-The practical ceiling is lower because retries, testing, ingestion/re-indexing, evaluation, and failed requests may also consume calls.
+These are arithmetic ceilings, not guaranteed service capacity. The practical ceiling is lower because retries, testing, ingestion/re-indexing, evaluation, failed requests, provider-specific endpoint limits, and quota policy may also consume or constrain calls.
 
 This is why the current $0 AI invoice must not be used as a commercial scaling assumption.
 
 ---
 
-## 5. Measured 30-Question Production Usage
+## 5. Measured 30-Question Evaluated Benchmark Usage
 
 The final cost profile successfully completed all **30/30** golden-set questions.
 
@@ -763,7 +764,7 @@ The measured data shows that Command A generation is the dominant known variable
 9. Introduce per-user or per-plan query quotas to prevent unbounded variable COGS.
 10. Set infrastructure usage caps and alerts before scaling.
 
-Any optimization that changes the two-pass answer pipeline should be re-evaluated against the project's current RAGAS quality score before adoption.
+Any change to the default generation path or optional review policy should be re-evaluated against the project's current RAGAS quality score before replacing the published benchmark evidence.
 
 ---
 

@@ -631,7 +631,8 @@ Multilingual embeddings
 + RRF hybrid candidate fusion
 + Cohere multilingual reranking
 + Top-5 grounded context
-+ two-pass Command A generation
++ one-pass Command A generation by default
++ optional second review pass for benchmark reproducibility
 + separate source attribution
 ```
 

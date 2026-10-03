@@ -93,7 +93,7 @@ Yemen Opportunity Navigator addresses this by retrieving evidence from curated o
 
 ![Yemen Opportunity Navigator Architecture](docs/charts/architecture_diagram.png)
 
-> The architecture diagram records the evaluated two-pass configuration used for the reported RAGAS, cost, and latency benchmarks. The current public deployment uses a more resilient production default: one generation pass per uncached normal query, with the review pass optional.
+> The architecture diagram reflects the **current production-safe default**: one grounded generation pass per uncached normal query, with the second review pass optional. The RAGAS, cost, and latency values shown in the diagram are historical measured evidence from the evaluated **two-pass benchmark configuration**.
 
 The current public query pipeline is:
 

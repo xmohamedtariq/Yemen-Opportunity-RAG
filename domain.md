@@ -214,7 +214,7 @@ The implemented project demonstrates:
 - BM25 lexical retrieval;
 - hybrid retrieval with RRF;
 - multilingual reranking;
-- grounded two-pass generation;
+- grounded one-pass generation by default, with an optional second review pass;
 - source attribution;
 - authentication;
 - deployment;

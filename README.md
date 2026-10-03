@@ -26,8 +26,10 @@ It combines:
 - hybrid rank fusion with RRF;
 - Cohere multilingual reranking;
 - top-5 grounded evidence selection;
-- two-pass Command A generation;
-- structured source attribution;
+- one-pass Command A generation by default, with an optional second review pass;
+- structured source attribution independent from answer text;
+- graceful degradation when external AI services are unavailable;
+- quota-aware retry handling and 5-minute caching for identical public queries;
 - Streamlit Community Cloud deployment;
 - Hugging Face Spaces public presentation mirror;
 - Supabase authentication;
@@ -64,7 +66,7 @@ It combines:
 
 > The `0.9526` value is a project-level arithmetic summary of the four RAGAS metric averages. It is not a separate canonical RAGAS metric.
 
-> Cost values above are **Command A generation-only**. Embed and Rerank usage is measured separately; exact production PAYG dollar rates should be verified before calculating full variable COGS.
+> Cost and latency values above were measured using the **evaluated two-pass generation configuration**. The current public deployment defaults to one Chat generation pass per uncached normal query, with the second review pass optional. Cost values are Command A generation-only; Embed and Rerank usage is measured separately.
 
 ---
 
@@ -91,7 +93,9 @@ Yemen Opportunity Navigator addresses this by retrieving evidence from curated o
 
 ![Yemen Opportunity Navigator Architecture](docs/charts/architecture_diagram.png)
 
-The implemented query pipeline is:
+> The architecture diagram records the evaluated two-pass configuration used for the reported RAGAS, cost, and latency benchmarks. The current public deployment uses a more resilient production default: one generation pass per uncached normal query, with the review pass optional.
+
+The current public query pipeline is:
 
 ```text
 Arabic / English Query
@@ -101,22 +105,29 @@ Arabic / English Query
 Cohere Query Embedding           Raw Query
         v                            v
 Chroma Vector Search            BM25 Search
-        |------------|---------------|
+        |                            |
+        |---- fallback to BM25 ------|
                      v
                Hybrid + RRF
                      v
               20 Candidates
                      v
         Cohere Multilingual Reranker
+          |                  |
+          | success          | failure
+          v                  v
+       Top 5         Existing Hybrid/BM25 Order
+          |__________________|
                      v
-                  Top 5
+              Top-5 Evidence
               |-----------|
               v           v
        Context Builder  Source Builder
               v           |
-       Command A Pass 1   |
+    Command A Grounded Draft
               v           |
-       Command A Pass 2   |
+   Optional Context Review
+   (RAG_ENABLE_ANSWER_REVIEW=1)
               v           |
         Answer Cleanup    |
               |-----------|
@@ -124,6 +135,9 @@ Chroma Vector Search            BM25 Search
              Answer + Sources
                      v
                 Streamlit UI
+
+If generation is unavailable because of quota/rate limits or a provider failure,
+the retrieved official sources are still returned with a user-facing notice.
 ```
 
 The offline ingestion path is:
@@ -402,7 +416,23 @@ Generation model:
 command-a-03-2025
 ```
 
-The current production path uses two generation stages:
+The current public deployment defaults to a single grounded generation pass:
+
+```text
+Top-5 Grounded Context
+        ->
+Grounded Draft
+        ->
+Public Answer Cleanup
+```
+
+A second draft-plus-context review remains available for reproducibility and quality experiments:
+
+```env
+RAG_ENABLE_ANSWER_REVIEW=1
+```
+
+With review enabled:
 
 ```text
 Top-5 Grounded Context
@@ -414,15 +444,40 @@ Pass 2: Draft + Context Review
 Public Answer Cleanup
 ```
 
-The second pass is a deliberate quality-versus-cost/latency trade-off.
+The reported RAGAS, cost, and latency benchmarks were produced using this **evaluated two-pass configuration**. The public deployment now defaults to one Chat call to reduce API consumption and latency while preserving the option to reproduce the evaluated path.
 
-Measured normal API structure:
+Current public default for an uncached normal query:
+
+```text
+1 Chat call/query
+1 Embed call/query
+1 Rerank call/query
+```
+
+Evaluated benchmark configuration:
 
 ```text
 2 Chat calls/query
 1 Embed call/query
 1 Rerank call/query
 ```
+
+---
+
+## Production Reliability and Graceful Degradation
+
+The deployed application is designed to continue returning useful evidence when an external AI service is temporarily unavailable.
+
+Current reliability behavior includes:
+
+- monthly/trial quota exhaustion is treated as **non-retryable**;
+- only transient provider or network failures are retried;
+- vector-search failure falls back to BM25 retrieval;
+- reranker failure preserves the existing hybrid/BM25 ordering;
+- generation failure returns the retrieved official sources with a user-facing notice instead of failing the entire search;
+- identical public queries are cached for **5 minutes** to reduce repeated API calls.
+
+This means the core retrieval experience can remain useful even when AI answer generation is temporarily unavailable.
 
 ---
 
@@ -499,7 +554,7 @@ This is the primary measured quality improvement area. Future work should make a
 
 ## Cost Profiling
 
-The investor cost profiler sends the 30 golden questions through the production RAG pipeline and records API usage.
+The investor cost profiler sends the 30 golden questions through the evaluated two-pass RAG benchmark configuration and records API usage. These measurements describe the configuration used to produce the reported evidence, not the lower-call current public default.
 
 Final benchmark:
 
@@ -540,7 +595,7 @@ Measured generation cost:
 | 100,000 | $1,982.97 | $2,205.75 | $2,419.50 |
 | 1,000,000 | $19,829.67 | $22,057.50 | $24,195.00 |
 
-These values are **generation-only**.
+These values are **generation-only** and were measured with the evaluated two-pass generation configuration. The current public one-pass default is expected to use fewer generation tokens/calls, but a new cost benchmark should be run before reporting replacement production cost figures.
 
 Detailed financial assumptions and production scenarios are documented in:
 
@@ -550,7 +605,7 @@ Detailed financial assumptions and production scenarios are documented in:
 
 ## Latency Profile
 
-Measured end-to-end latency:
+Measured end-to-end latency for the evaluated two-pass benchmark configuration:
 
 | Metric | Seconds |
 |---|---:|
@@ -603,12 +658,11 @@ Current capabilities include:
 - email/password sign-in;
 - session handling;
 - username metadata;
-- authenticated saved opportunities and search history;
-- direct account access without requiring an email-confirmation step in the current capstone demo configuration.
+- authenticated saved opportunities and search history.
 
-Authentication is kept separate from the RAG retrieval/generation logic.
+Authentication is kept separate from the RAG retrieval/generation logic. Email-verification behavior is deployment-configurable and depends on Supabase and the configured email-delivery service; temporary email-delivery issues do not affect the core retrieval pipeline.
 
-The current configuration prioritizes a frictionless public capstone demo; production deployments should re-enable stronger email-verification controls where appropriate.
+The production session flow was also hardened to avoid unnecessary repeated token refreshes during Streamlit reruns.
 
 ---
 
@@ -689,6 +743,7 @@ Yemen-Opportunity-RAG/
 |-- cost_analysis.md
 |-- domain.md
 |-- README.md
+|-- .env.example
 |-- requirements.txt
 |-- sources.csv
 |
@@ -723,6 +778,7 @@ Yemen-Opportunity-RAG/
 |   |-- ragas_eval.py
 |   |-- ragas_results.csv
 |   |-- ragas_summary.md
+|   |-- refresh_ragas_cache.py
 |   |-- investor_cost_profile.py
 |   |-- investor_cost_profile.csv
 |   `-- investor_cost_summary.md
@@ -738,6 +794,7 @@ Yemen-Opportunity-RAG/
     |-- build_vector_store.py
     |-- hybrid_retriever.py
     |-- reranker.py
+    |-- provider_utils.py
     `-- rag_pipeline.py
 ```
 
@@ -803,6 +860,8 @@ Optional RAG configuration can be overridden through environment variables where
 GENERATION_MODEL=command-a-03-2025
 RAG_CANDIDATE_K=20
 RAG_TOP_N=5
+RAG_MAX_RETRIES=2
+RAG_ENABLE_ANSWER_REVIEW=0
 ```
 
 Do **not** commit secrets.
@@ -886,7 +945,7 @@ evaluation/investor_cost_profile.csv
 evaluation/investor_cost_summary.md
 ```
 
-This benchmark executes the production RAG path and can consume paid API resources.
+This benchmark can consume paid API resources. To reproduce the historical cost/RAGAS evidence, use the evaluated two-pass configuration (`RAG_ENABLE_ANSWER_REVIEW=1`). The current public deployment defaults to `0`.
 
 ---
 
@@ -916,10 +975,9 @@ Detailed implemented architecture, retrieval pipeline, RAGAS results, cost evide
 
 ### Architecture Decision Record
 
-- [One-Page ADR — PDF](docs/Yemen_Opportunity_Navigator_RAG_Architecture_Decision_Record.pdf)
-- [Detailed ADR — Markdown](ADR.md)
+**One-Page Architecture Decision Record:** [PDF](https://github.com/xmohamedtariq/Yemen_Opportunity_Navigator_RAG/blob/main/docs/Yemen_Opportunity_Navigator_RAG_Architecture_Decision_Record.pdf) — [Markdown version](https://github.com/xmohamedtariq/Yemen_Opportunity_Navigator_RAG/blob/main/ADR.md)
 
-The one-page PDF is the final submission version. The Markdown file contains the detailed repository record.
+The ADR reflects the current resilient production default while preserving the evaluated two-pass configuration used to produce the reported RAGAS, cost, and latency evidence.
 ### Technical Evidence
 
 [`docs/technical_evidence.md`](docs/technical_evidence.md)
@@ -996,32 +1054,35 @@ learned reranker
 
 The current golden set achieved 100% Recall@5 with this configuration.
 
-### Why two Command A calls?
+### Why is the second Command A review optional?
 
-The second pass reviews the draft against context.
+The evaluated benchmark used two generation passes: a grounded draft followed by a draft-plus-context review. This configuration produced the reported RAGAS, cost, and latency evidence.
 
-This may improve quality and grounding, but increases:
+The public deployment now defaults to one generation pass because the second pass increases:
 
 - token usage;
+- API calls;
 - cost;
-- latency.
+- latency;
+- exposure to provider quota limits.
 
-The trade-off is explicitly measured rather than hidden.
+The review pass remains available through `RAG_ENABLE_ANSWER_REVIEW=1` so the evaluated configuration is reproducible without forcing its extra cost on every public query.
 
 ---
 
 ## Known Limitations
 
-1. **Answer Relevancy = 0.8227** remains the primary measured quality weakness.
+1. **Answer Relevancy = 0.8227** remains the primary measured quality improvement area.
 2. The retrieval benchmark contains 30 questions.
 3. RAGAS currently evaluates 20 questions.
 4. The current corpus contains 49 usable sources / 164 chunks.
 5. The benchmark does not prove identical performance at large production scale.
-6. P95 latency is 32.381 seconds.
+6. The reported P95 latency of 32.381 seconds belongs to the evaluated two-pass configuration; the current one-pass public default has not yet been re-profiled as a replacement benchmark.
 7. Embed/Rerank dollar cost still requires verification against the exact future production pricing model.
 8. Opportunity information is time-sensitive; freshness must be monitored separately from retrieval quality.
 9. A 100% Recall@5 result on the golden set is not a guarantee for every possible future user query.
-10. The current architecture prioritizes evidence quality over minimum latency.
+10. External providers can impose quotas, rate limits, or temporary outages; the application now degrades gracefully instead of treating generation failure as total search failure.
+11. OCR/VLM is not part of the default ingestion path because the current sources are machine-readable. Scanned pages, complex tables, figures, graphs, and other visual content require conditional OCR/VLM processing in future extensions.
 
 ---
 
@@ -1035,9 +1096,11 @@ Potential next steps include:
 - larger multilingual golden sets;
 - larger RAGAS test sets;
 - stage-level latency telemetry;
-- query/result caching;
-- conditional second-pass generation;
+- persistent/shared caching beyond the current short-lived public-query cache;
 - model routing by query complexity;
+- conditional OCR for scanned pages;
+- VLM or specialized parsers for complex tables, figures, graphs, and diagrams;
+- production-grade email verification/delivery configuration;
 - user/query quotas;
 - production usage dashboards;
 - explicit unit-economics monitoring;
@@ -1098,7 +1161,7 @@ The five required final deliverables are available as follows:
 2. **Live Demo:** [Streamlit Community Cloud](https://yemen-opportunity-navigator.streamlit.app)  
    **Additional public access:** [Hugging Face Space](https://huggingface.co/spaces/xmohamedtariq/Yemen-Opportunity-Navigator)
 
-3. **One-Page Architecture Decision Record:** [PDF](docs/Yemen_Opportunity_Navigator_RAG_Architecture_Decision_Record.pdf) — [Markdown version](ADR.md)
+3. **One-Page Architecture Decision Record:** [PDF](https://github.com/xmohamedtariq/Yemen_Opportunity_Navigator_RAG/blob/main/docs/Yemen_Opportunity_Navigator_RAG_Architecture_Decision_Record.pdf) — [Markdown version](https://github.com/xmohamedtariq/Yemen_Opportunity_Navigator_RAG/blob/main/ADR.md)
 
 4. **RAGAS Evaluation on 20 Questions:** 10 Arabic + 10 English, documented in [`evaluation/ragas_summary.md`](evaluation/ragas_summary.md) and the RAGAS section above.
 

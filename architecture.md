@@ -19,12 +19,14 @@ The source collection originally contained 50 candidate source IDs. One candidat
 
 ![Yemen Opportunity Navigator Architecture](docs/charts/architecture_diagram.png)
 
+> **Version note:** The chart highlights the current production-safe architecture: **one grounded Command A draft by default**, with the second draft-plus-context review available only when `RAG_ENABLE_ANSWER_REVIEW=1`. The reported RAGAS, cost, and latency benchmarks were collected on the evaluated **two-pass** configuration for reproducibility.
+
 The architecture has two major execution phases:
 
 1. offline knowledge-base ingestion;
 2. online query-time retrieval, reranking, generation, and source rendering.
 
-Measured quality, cost, and latency are evaluated separately but against the same production RAG path.
+Measured quality, cost, and latency are evaluated separately. Retrieval quality applies to the current retrieval stack; the reported cost and latency evidence corresponds to the evaluated two-pass benchmark path, while the public deployment now defaults to one Chat generation pass for better resilience and lower cost.
 
 ## 3. Offline Ingestion
 
@@ -313,7 +315,23 @@ Generation model:
 command-a-03-2025
 ```
 
-The current pipeline uses two generation stages:
+The current **public deployment default** uses one grounded generation pass:
+
+```text
+Top-5 grounded context
+    ->
+Grounded draft
+    ->
+Public answer cleanup
+```
+
+A second draft-plus-context review remains available for reproducibility and quality experiments:
+
+```env
+RAG_ENABLE_ANSWER_REVIEW=1
+```
+
+With review enabled, the evaluated benchmark path becomes:
 
 ```text
 Top-5 grounded context
@@ -327,11 +345,31 @@ Public answer cleanup
 
 The second pass is an explicit quality/cost/latency trade-off.
 
-The measured cost profile confirms:
+Current public default for an uncached normal query:
+
+- Chat calls/query: **1**;
+- Embed calls/query: **1**;
+- Rerank calls/query: **1**.
+
+Evaluated benchmark configuration:
 
 - Chat calls/query: **2**;
 - Embed calls/query: **1**;
 - Rerank calls/query: **1**.
+
+## 13.5 Production Reliability
+
+The deployed application is intentionally resilient when a third-party AI dependency becomes temporarily unavailable.
+
+Current behavior includes:
+
+- monthly/trial quota exhaustion is treated as **non-retryable**;
+- only transient provider/network failures are retried;
+- vector-search failure falls back to BM25;
+- reranker failure preserves the existing hybrid/BM25 ordering;
+- generation failure returns the retrieved official sources with a user-facing notice instead of failing the entire search.
+
+This means retrieval and source evidence can still be delivered even when AI answer generation is temporarily unavailable.
 
 ## 14. Public Answer and Sources
 

@@ -2,7 +2,7 @@
 
 **Pricing snapshot: 2026-09-30**
 
-This report measures actual API usage from the production RAG pipeline across the project's 30-question golden set.
+This report measures actual API usage from the evaluated two-pass RAG benchmark pipeline across the project's 30-question golden set.
 
 ## 1. Measurement Status
 
@@ -87,8 +87,8 @@ Measured Command A generation cost for all successful benchmark queries: **$0.59
 - Chat, Embed, and Rerank billed units are read from Cohere API responses.
 - Successful measurements are cached in the CSV and are not rerun during resume.
 - Failed measurements are discarded on resume and automatically attempted again.
-- The script includes question-level retries in addition to retries already implemented inside the production RAG pipeline.
-- Latency is measured around the complete production RAG request.
+- The script includes question-level retries in addition to retries already implemented inside the evaluated RAG benchmark pipeline.
+- Latency is measured around the complete evaluated RAG benchmark request.
 - Mean represents expected average cost.
 - P95 represents a conservative planning case.
 - Maximum observed cost represents the measured stress case.

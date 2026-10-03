@@ -24,6 +24,13 @@ EVALUATION_DIR = ROOT / "evaluation"
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(SRC))
 
+# Keep this measurement script aligned with the historical two-pass
+# cost profile unless a caller explicitly requests another setting.
+os.environ.setdefault(
+    "RAG_ENABLE_ANSWER_REVIEW",
+    "1",
+)
+
 from rag_pipeline import YemenOpportunityRAG  # noqa: E402
 
 
@@ -444,7 +451,7 @@ def write_summary(rows, args):
         "",
         (
             "This report measures actual API usage from the "
-            "production RAG pipeline across the project's "
+            "evaluated two-pass RAG benchmark pipeline across the project's "
             "30-question golden set."
         ),
         "",
@@ -994,7 +1001,7 @@ def write_summary(rows, args):
             (
                 "- The script includes question-level retries "
                 "in addition to retries already implemented "
-                "inside the production RAG pipeline."
+                "inside the evaluated RAG benchmark pipeline."
             ),
 
             (
@@ -1045,7 +1052,7 @@ def main():
 
     parser = argparse.ArgumentParser(
         description=(
-            "Measure investor-grade production RAG "
+            "Measure investor-grade evaluated RAG benchmark "
             "API usage across the golden set."
         )
     )
@@ -1385,17 +1392,17 @@ def main():
     )
 
     # ========================================================
-    # INITIALIZE REAL PRODUCTION RAG
+    # INITIALIZE EVALUATED RAG BENCHMARK PATH
     # ========================================================
 
     print(
-        "[INFO] Initializing production RAG..."
+        "[INFO] Initializing evaluated RAG benchmark path..."
     )
 
     rag = YemenOpportunityRAG()
 
     print(
-        "[OK] Production RAG ready."
+        "[OK] Evaluated RAG benchmark path ready."
     )
 
     print()

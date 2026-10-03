@@ -137,6 +137,14 @@ load_dotenv(
 )
 
 
+# Reproduce the two-pass generation configuration used for the
+# published RAGAS evidence unless the evaluator explicitly overrides it.
+os.environ.setdefault(
+    "RAG_ENABLE_ANSWER_REVIEW",
+    "1",
+)
+
+
 # Import after loading environment variables.
 from rag_pipeline import (
     YemenOpportunityRAG,
@@ -1209,7 +1217,7 @@ def build_evaluation_rows():
     print(
 
         "[INFO] Initializing "
-        "production RAG..."
+        "evaluated RAG benchmark path..."
     )
 
 
@@ -1360,7 +1368,7 @@ def build_evaluation_rows():
         print(
 
             "   -> Running "
-            "production RAG..."
+            "evaluated RAG benchmark path..."
         )
 
 

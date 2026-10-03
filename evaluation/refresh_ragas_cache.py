@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -29,6 +30,14 @@ sys.path.insert(
 sys.path.insert(
     0,
     str(EVALUATION_DIR),
+)
+
+
+# The cached RAGAS dataset was built from the evaluated two-pass
+# generation path. Preserve that default for reproducible refreshes.
+os.environ.setdefault(
+    "RAG_ENABLE_ANSWER_REVIEW",
+    "1",
 )
 
 
@@ -181,7 +190,7 @@ def main():
 
         print(
             "   -> Running updated "
-            "production RAG..."
+            "evaluated RAG benchmark path..."
         )
 
         result = (

@@ -418,7 +418,7 @@ def generate_cost_scaling_chart(
     )
 
     ax.set_title(
-        "Command A Generation Cost vs Query Volume",
+        "Command A Generation Cost vs Query Volume — Evaluated Two-Pass Benchmark",
         fontsize=16,
         pad=16,
         fontweight="bold",
@@ -462,8 +462,8 @@ def generate_cost_scaling_chart(
         0.01,
         -0.19,
         (
-            "Generation-only projection. Embed, Rerank, "
-            "hosting and database costs are accounted for separately."
+            "Evaluated two-pass benchmark. Generation-only projection; "
+            "Embed, Rerank, hosting and database costs are separate."
         ),
         transform=ax.transAxes,
         fontsize=9,
@@ -511,7 +511,7 @@ def generate_latency_chart(
     )
 
     ax.set_title(
-        "End-to-End RAG Latency Profile",
+        "End-to-End RAG Latency Profile — Evaluated Two-Pass Benchmark",
         fontsize=16,
         pad=16,
         fontweight="bold",
@@ -541,8 +541,8 @@ def generate_latency_chart(
         0.01,
         -0.18,
         (
-            "Maximum latency includes observed network/retry effects "
-            "and is not equivalent to steady-state model latency."
+            "Evaluated two-pass benchmark. Maximum latency includes "
+            "observed network/retry effects, not steady-state model latency."
         ),
         transform=ax.transAxes,
         fontsize=9,
@@ -614,7 +614,7 @@ def generate_language_cost_chart(
     )
 
     ax.set_title(
-        "Mean Generation Cost by Query Language",
+        "Mean Generation Cost by Query Language — Evaluated Two-Pass Benchmark",
         fontsize=16,
         pad=16,
         fontweight="bold",
@@ -661,7 +661,7 @@ def generate_language_cost_chart(
         0.01,
         -0.16,
         (
-            f"Observed sample: Arabic mean generation cost was "
+            f"Evaluated two-pass sample: Arabic mean generation cost was "
             f"{difference_percent:.2f}% higher than English. "
             "This is a benchmark observation, not a universal rule."
         ),
@@ -712,7 +712,7 @@ def generate_language_latency_chart(
     )
 
     ax.set_title(
-        "Mean End-to-End Latency by Query Language",
+        "Mean End-to-End Latency by Query Language — Evaluated Two-Pass Benchmark",
         fontsize=16,
         pad=16,
         fontweight="bold",
@@ -759,7 +759,7 @@ def generate_language_latency_chart(
         0.01,
         -0.16,
         (
-            f"Observed sample: Arabic mean end-to-end latency was "
+            f"Evaluated two-pass sample: Arabic mean end-to-end latency was "
             f"{difference_percent:.2f}% higher than English."
         ),
         transform=ax.transAxes,

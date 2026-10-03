@@ -743,7 +743,8 @@ Context Builder    Source Builder
        ↓                │
 Command A Pass 1        │
        ↓                │
-Command A Pass 2        │
+Optional Review          │
+(enabled for benchmark)  │
        ↓                │
 Answer Cleanup          │
        └───────┬────────┘
@@ -769,7 +770,7 @@ selected from the 30-question golden set:
 
 For each sample:
 
-- the production RAG pipeline generated the answer;
+- the evaluated RAG pipeline generated the answer using the published benchmark configuration;
 - retrieved contexts came from the same retrieval/reranking path used by the application;
 - reference answers were generated only from manually assigned gold chunks;
 - reference generation was explicitly instructed not to use outside knowledge.
@@ -1332,13 +1333,15 @@ It does not prove that 20/5 is globally optimal for all future datasets.
 
 ---
 
-## 45. Why Two-Pass Generation Is a Trade-off
+## 45. Why the Optional Two-Pass Review Is a Trade-off
 
-Measured normal query behavior:
+The published benchmark configuration used:
 
 ```text
 2 Chat calls/query
 ```
+
+The current public default uses one Chat call per uncached normal query; the second review pass is optional.
 
 This contributes directly to:
 

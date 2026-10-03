@@ -21,8 +21,9 @@ The implemented pipeline combines:
 - hybrid ranking with Reciprocal Rank Fusion (RRF);
 - Cohere multilingual reranking;
 - a top-5 evidence context;
-- two-pass Command A answer generation and review;
+- one-pass Command A generation by default, with an optional second draft-plus-context review;
 - separate source-attribution construction;
+- graceful degradation when external AI services are unavailable;
 - Streamlit as the web interface;
 - Supabase authentication;
 - reproducible Recall@5, RAGAS, cost, and latency evaluation.
@@ -32,6 +33,9 @@ The strongest measured retrieval result is:
 **Recall@5 = 100% (30/30 golden questions)**
 
 The generation-quality evaluation produced:
+
+> **Version note:** The public deployment now defaults to **one Chat generation pass per uncached normal query**. The second review pass is optional (`RAG_ENABLE_ANSWER_REVIEW=1`) and was enabled for the reported RAGAS, cost, and latency benchmark runs so the measured evidence remains reproducible.
+
 
 | Metric | Score |
 |---|---:|
@@ -593,7 +597,7 @@ The aim is to force answer generation to operate on the retrieved evidence rathe
 
 ---
 
-## 19. Two-Pass Generation
+## 19. Configurable Generation (One-Pass Default, Two-Pass Benchmark)
 
 The production RAG pipeline contains separate methods for:
 
@@ -603,13 +607,23 @@ review_answer(...)
 generate_answer(...)
 ```
 
-The measured cost profile confirms:
+The **public deployment default** is:
 
-**2 Chat calls per normal query**
+```text
+Top-5 context
+     ↓
+Pass 1 — grounded draft
+     ↓
+Clean public answer
+```
 
-across the 30-question benchmark.
+A second draft-plus-context review can be re-enabled with:
 
-The generation process is therefore modeled as:
+```env
+RAG_ENABLE_ANSWER_REVIEW=1
+```
+
+The measured cost profile confirms **2 Chat calls per normal query** across the 30-question benchmark because that benchmark used the evaluated two-pass path:
 
 ```text
 Top-5 context
@@ -640,6 +654,20 @@ The trade-off is:
 This trade-off is measured rather than hidden in the cost profile.
 
 ---
+
+## 19.5 Production Reliability
+
+The deployed system is designed to degrade gracefully instead of failing completely when an external AI dependency becomes unavailable.
+
+Implemented reliability behavior includes:
+
+- monthly/trial quota exhaustion treated as **non-retryable**;
+- retries only for transient provider/network failures;
+- vector-search fallback to BM25;
+- reranker failure preserving the existing hybrid/BM25 ordering;
+- generation failure returning retrieved official sources with a user-facing notice.
+
+This separates core retrieval usability from third-party answer-generation availability.
 
 ## 20. Public Answer Cleanup
 
